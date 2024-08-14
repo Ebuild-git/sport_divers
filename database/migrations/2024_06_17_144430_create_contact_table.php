@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('nom')->nullable();
             $table->string('telephone')->nullable();
-            $table->string('sujet');
+            $table->integer("age")->nullable();
+            $table->string('sujet')->nullable();
             $table->string('email');
             $table->text('message');
             $table->timestamps();

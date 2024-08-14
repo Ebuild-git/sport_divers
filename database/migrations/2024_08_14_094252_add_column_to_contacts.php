@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('videos', function (Blueprint $table) {
+        Schema::table('contacts', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('views')->default(0);
+            $table->integer("age")->nullable();
         });
     }
 
@@ -22,9 +22,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('videos', function (Blueprint $table) {
-            //
-            $table->dropColumn('views');
+        Schema::table('contacts', function (Blueprint $table) {
+            
+            $table->dropColumn('age');
+
+           
         });
     }
 };

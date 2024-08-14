@@ -51,7 +51,18 @@
 
             <div class="col-lg-6">
                 <div class="from-control">
-                    <input wire:model="sujet" type="number" placeholder="Age" id="subject" required="required">
+                    <input wire:model="age" type="number" placeholder="Age" id="age" required="required">
+                    @error('age')
+                        <span class="small text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="from-control">
+                    <input wire:model="sujet" type="text" placeholder="Sujet" id="sujet" required="required">
                     @error('sujet')
                         <span class="small text-danger">
                             {{ $message }}
