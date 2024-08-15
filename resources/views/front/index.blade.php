@@ -107,7 +107,7 @@
 
                     <style>
                         .rs-upcoming-match.bg1 {
-                            background-image: url('{{ Storage::url($lastVideo->image) }}');
+                            background-image: url('{{ Storage::url($lastVideo->image ?? ' ') }}');
                             background-size: cover;
                             background-position: center;
                             background-repeat: no-repeat;
