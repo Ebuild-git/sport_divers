@@ -124,7 +124,7 @@
                                 <div class="row rs-vertical-middle">
                                     <div class="col-md-4 col-sm-4 col-4">
                                         <div class="team-logo">
-                                            <img class="size-80" src="{{ Storage::url($lastVideo->image) }}"
+                                            <img class="size-80" src="{{ Storage::url($lastVideo->image ?? '') }}"
                                                 alt="Valencia">
                                             <div class="name white-color">{{ $lastVideo->titre ?? '' }}</div>
                                         </div>
@@ -151,9 +151,9 @@
                     <div class="col-lg-8 pl-30 col-padding-md">
                         <div class="rs-video rs-upcoming-match big-space bg1 bdru-4 text-center">
                             <div class="video-contents">
-                                <a class="popup-videos play-btn"onclick="playVideoInSmallPlayer('{{ Storage::url($lastVideo->video) }}')"
+                                <a class="popup-videos play-btn"onclick="playVideoInSmallPlayer('{{ Storage::url($lastVideo->video ?? ' ') }}')"
                                     {{--  onclick="openModal('{{ Storage::url($lastVideo->video) }}')" --}} {{-- href="https://www.youtube.com/watch?v=t17O6JoU2Ew" --}}><i class="fa fa-play"></i></a>
-                                <h3 class="title white-color mt-18 mb-0">{{ $lastVideo->tittre }}</h3>
+                                <h3 class="title white-color mt-18 mb-0">{{ $lastVideo->tittre ?? ' ' }}</h3>
                             </div>
                         </div>
                     </div>
@@ -257,9 +257,9 @@
                         <div class="items"
                             style="background-image: url('{{ Storage::url($latestVideo->image ?? 'path/to/default-image.jpg') }}');padding:2px;  width: 200px;
     height: 150px; background-size: cover; background-position: center;">
-                            <a onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video) }}')">
+                            <a onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video ?? ' ') }}')">
                                 <div class="vanues">
-                                    <div class="stadium" id="views-{{ $latestVideo->id }}">{{ $latestVideo->titre }}
+                                    <div class="stadium" id="views-{{ $latestVideo->id }}">{{ $latestVideo->titre ?? ' ' }}
                                     </div>
                                 </div>
                                 <div class="teams">
