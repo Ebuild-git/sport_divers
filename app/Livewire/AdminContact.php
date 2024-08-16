@@ -24,7 +24,7 @@ class AdminContact extends Component
         $this->titre_apropos = $config->titre_apropos;
         $this->des_apropos = $config->des_apropos;
        
-      //  $this->logocontact= $config->logocontact;
+        $this->logocontact= $config->logocontact;
         $this->logocontact2= $config->logocontact;
         $this->logoHeader= $config->logoHeader;
         $this->email=$config->email;

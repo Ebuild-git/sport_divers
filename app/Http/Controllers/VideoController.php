@@ -79,9 +79,11 @@ public function incrementViewCount($id)
          $this->validate($request, [
              'titre' => 'required|string|max:255',
              'description' => 'required|string|max:255',
-           //  'video' => 'required|file|mimetypes:*', // Accepte tous les formats
-            'video' => 'required|file|mimetypes:video/mp4,video/x-msvideo,video/avi,video/mpeg,video/quicktime,video/x-ms-wmv,video/x-matroska,video/x-flv,video/webm',
-             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+             'video' => 'required|file|mimetypes:video/*',
+            //'video' => 'required|file|mimetypes:*', // Accepte tous les formats
+          //  'video' => 'required|file|max:1002400', // 100MB in kilobytes
+           //'video' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime,video/x-ms-wmv,video/x-msvideo,video/x-flv,video/3gpp,video/3gpp2,video/webm,video/x-matroska|max:500000',
+         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
      
          ]);
         $user= Auth::id();
@@ -89,8 +91,6 @@ public function incrementViewCount($id)
          $filePath = 'videos/' . $fileName;
   
          $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->video));
-  
-         // File URL to access the video in frontend
          $url = Storage::disk('public')->url($filePath);
   
          if ($isFileUploaded) {

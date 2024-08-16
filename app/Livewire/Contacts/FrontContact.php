@@ -8,7 +8,7 @@ class FrontContact extends Component
 {
 
     
-    public $email, $nom, $sujet, $message, $telephone, $contact,$age;
+    public $email, $nom, $sujet, $message, $telephone, $contact;
     public $end = false;
 
     public function mount($contact){
@@ -16,9 +16,8 @@ class FrontContact extends Component
             $this->contact = $contact;
             $this->nom = $contact->nom;
             $this->email = $contact->email;
-           $this->sujet = $contact->sujet;
+            $this->sujet = $contact->sujet;
             $this->message = $contact->message;
-            $this->age = $contact->age;
            
           
            
@@ -30,7 +29,6 @@ class FrontContact extends Component
         $this->email = '';
         $this->sujet = '';
         $this->message = '';
-        $this->age = '';
     }
 
     public function save()
@@ -38,24 +36,23 @@ class FrontContact extends Component
         $this->validate([
             'email' => 'required|email',
             'nom' => 'required|max:200|string',
-         //   'sujet' => 'required|max:200|string',
+            'sujet' => 'required|max:200|string',
             'message' => 'required|max:5000|string',
-            'age' => 'required|max:200|numeric',
           //  'telephone' => 'required|max:20|string',
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'nom.required' => 'Veuillez entrer votre nom',
-            //'sujet.required' => 'Veuillez entrer votre sujet',
+            'sujet.required' => 'Veuillez entrer votre sujet',
             'message.required' => 'Veuillez entrer votre message',
-            'age.required' => 'Veuillez entrer votre age',
+           // 'telephone.required' => 'Veuillez entrer votre téléphone',
         ]);
 
         $contact = new Contact();
         $contact->email = $this->email;
         $contact->nom = $this->nom;
-       $contact->sujet = $this->sujet;
+        $contact->sujet = $this->sujet;
         $contact->message = $this->message;
-       $contact->age = $this->age;
+     //   $contact->telephone = $this->telephone;
      $contact->save();
      $this->resetInput();
      session()->flash('success', 'Votre message a été envoyé avec succès');
@@ -80,7 +77,6 @@ class FrontContact extends Component
         $this->email = '';
         $this->sujet = '';
         $this->message = '';
-        $this->age ='';
     }
 
     public function submit()
@@ -88,9 +84,8 @@ class FrontContact extends Component
         $validatedData = $this->validate([
             'email' => 'required|email',
             'nom' => 'required|max:200|string',
-           'sujet' => 'nullable|max:200|string',
+            'sujet' => 'required|max:200|string',
             'message' => 'required|max:5000|string',
-            'age' => 'required|max:200',
         ]);
   
         Contact::create($validatedData);

@@ -9,7 +9,7 @@ use Livewire\Component;
 class Liste extends Component
 {
 
-    protected $listeners = ['BannerAdded' => '$refresh'];
+    protected $listeners = ['BannerAdded' => '$refresh', 'deleteBanner'];
 
 
     public function render()
@@ -21,6 +21,19 @@ class Liste extends Component
     public function confirm($id)
     {
         $this->emit('confirm', $id);
+    }
+
+
+    //protected $listeners = ['deleteBanner'];
+
+    public function deleteBanner($id)
+    {
+        $banner = Banner::find($id);
+
+        if ($banner) {
+            $banner->delete();
+            session()->flash('message', 'Bannière supprimée avec succès.');
+        }
     }
 
     public function delete($id){
