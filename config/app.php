@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'MARIBELLE'),
+    'name' => env('APP_NAME', 'Sport >Divers'),
     'auteur_url' => env('APP_AUTEUR_URL', 'Laravel auteur'),
     'auteur' => env('APP_AUTEUR', 'Laravel url'),
     'app_url' => env('APP_URL','url'),

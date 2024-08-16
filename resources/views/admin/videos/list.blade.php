@@ -267,6 +267,17 @@
                                 <br>
                             </div>
 
+                            <script>
+                                document.getElementById('video').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file.size > 100 * 1024 * 1024) { // 100MB
+        alert('Le fichier est trop volumineux.');
+        this.value = '';
+    }
+});
+
+                            </script>
+
 
 
 

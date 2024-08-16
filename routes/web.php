@@ -10,6 +10,7 @@ use App\Http\Controllers\favoris_client;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\CoachController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ImageController;
@@ -148,6 +149,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('permission:service_edit');
 
 
+        
     /////////////////////////Les marques//////////////////////////////////////
     Route::get('/admin/marques', [AdminController::class, 'marques'])
 
@@ -179,6 +181,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/event_update/{id}', [ EventController::class, 'event_update'])
             ->name('event_update');
           
+         ////////////////////////Coachs/////////////////////
+         Route::get('/admin/coachs', [CoachController::class, 'coachs'])
+            ->name('coachs')
+            ->middleware('permission:coach_view');
+            route::resource('videos', CoachController::class);
+            route::resource('coachs', CoachController::class);
+            Route::get('/admin/coach_update/{id}', [CoachController::class, 'coach_update'])
+            ->name('coach_update');
+
+        ///////////////////les  clients////////////////////////////////////////////////   
 
         ///////////////////////////videos //////////////////
         Route::get('/admin/videos', [AdminController::class, 'videos'])

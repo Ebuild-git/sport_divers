@@ -7,9 +7,9 @@
                         {{-- <button type="button" class="btn btn-sm btn-danger" wire:click="delete({{ $banner->id }})" wire:confirm="Supprimer ?">
                             <i class="ri-delete-bin-6-line"></i>
                         </button> --}}
-                        <button type="button" class="btn btn-sm btn-danger confirm" wire:click="delete({{ $banner->id }})" wire:confirm="Supprimer">
+                       {{--  <button type="button" class="btn btn-sm btn-danger confirm" wire:click="delete({{ $banner->id }})" wire:confirm="Supprimer">
                             <i class="ri-delete-bin-6-line"></i>
-                        </button>
+                        </button> --}}
                         <img src="{{ Storage::url($banner->image) }}" alt="{{ $banner->titre }}" class="w-100" srcset="">
                     </div>
                     <h6 class="mt-1 mb-2 titre">
@@ -20,9 +20,14 @@
                     </p>
                     <div class="text-center">
                         <a href="{{ route('banner.update',['id'=>$banner->id]) }}">
-                            <i class="ri-edit-2-line"></i>
+                         {{--    <i class="ri-edit-2-line"></i> --}}
                             Modifier
                         </a>
+
+                        <button type="button" style="font-size: 10px;" class="btn btn-sm btn-danger confirm" onclick="confirmDeletion({{ $banner->id }})" wire:click="delete({{ $banner->id }})" {{-- wire:confirm="Supprimer" --}}>
+                          
+                            Supprimer
+                        </button>
                     </div>
                 </div>
             </div>
@@ -38,7 +43,7 @@
         @endforelse
     </div>
 </div>
-<script>
+{{-- <script>
     document.addEventListener('livewire:load', function () {
         Livewire.on('confirm', id => {
             Swal.fire({
@@ -56,4 +61,25 @@
             });
         });
     });
+</script> --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+   function confirmDeletion(id) {
+    Swal.fire({
+        title: '<span style="font-size:14px;">Êtes-vous sûr ?</span>',
+        text: "Cette action est irréversible !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<span style="font-size:12px;">Oui, supprimer !</span>',
+        cancelButtonText: '<span style="font-size:12px;">Annuler</span>'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Livewire.emit('deleteBanner', id);
+        }
+    })
+}
+
 </script>
