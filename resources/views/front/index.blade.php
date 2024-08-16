@@ -26,11 +26,13 @@
         </style>
 
         <style>
-            
-.rs-banner.home5banner {
-    background-image: url('{{ asset('assets/contact/1.png') }}');
-
+   .title {
+    color: white;
+    text-align: center;
 }
+
+
+
         </style>
 
 <div id="rs-slider" class="rs-slider home-slider slider-navigation">
@@ -46,10 +48,14 @@
                         <img class="ball animate6" src="{{ Storage::url($banner->image) }}" alt="">
                     </div> --}}
                 </div>
+              {{--   <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
+                <h2 class="title"><span class="primary-color"></span> {{ $banner->titre ?? '' }}</h>
+                <br>
+                <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div>
                 <div class="text-part common">
-                    <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2>
-                    <h1 class="title"><span class="primary-color">Sport</span> Divers</h1>
-                    <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div>
+                    {{-- <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
+                  {{--   <h1 class="title"><span class="primary-color">Sport</span> Divers</h1> --}}
+                   {{--  <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div> --}}
                     <div class="slider-btn">
                         <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
                     </div>
@@ -331,7 +337,15 @@
                         data-ipad-device-dots2="false" data-md-device="3" data-md-device-nav="true"
                         data-md-device-dots="false">
                         @foreach ($latestVideos as $latestVideo)
-                  
+                            {{--  <div class="rs-video big-space  bdru-4 text-center" style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 300px; height: 200px; padding: 0px;">
+                    <div class="video-contents">
+                        <a class="popup-videos play-btn"
+                            onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video ?? '') }}')">
+                            <i class="fa fa-play"></i>
+                        </a>
+                        <h3 class="title white-color mt-18 mb-0">{{ $latestVideo->titre ?? '' }}</h3>
+                    </div>
+                </div> --}}
                             <div class="rs-video   bdru-4 text-center p-10"
                                 style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 

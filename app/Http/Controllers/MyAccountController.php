@@ -26,6 +26,7 @@ use App\Mail\{OrderChangeStatuts, ChangeStatut};
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class MyAccountController extends Controller
 {
@@ -56,7 +57,17 @@ public function avatar(Request $request)
         'avatar' => 'required|image|max:2048',
     ]);
     $user = Auth::user();
-    if ($user->avatar) {
+
+    
+    if ($request->hasFile('avatar')) {
+        if ($user->avatar) {
+            Storage::delete($user->avatar);
+        }
+
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $user->avatar = $path;
+    }
+    /* if ($user->avatar) {
         $oldAvatarPath = public_path('public/avatars/') . '/' . $user->avatar;
         if (File::exists($oldAvatarPath)) {
             File::delete($oldAvatarPath);
@@ -67,7 +78,7 @@ public function avatar(Request $request)
 
     $request->avatar->move(public_path('public/avatars/'), $avatarName);
 
-    Auth()->user()->update(['avatar' => $avatarName]);
+    Auth()->user()->update(['avatar' => $avatarName]); */
 
     return back()->with('success', 'Avatar updated successfully.');
 }
