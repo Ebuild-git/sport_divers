@@ -102,6 +102,7 @@ public function create()
      $this->dispatch('sponsorAdded');
 
    //  $this->emit('sponsorAdded');
+   return redirect()->route('sponsors');
   
 }
 
@@ -150,6 +151,7 @@ public function edit($id)
        // return view('livewire.sponsors.list'); 
          
    // return view('admin.sponsors.list');
+   return redirect()->route('sponsors');
     }
 
 public function delete($id)

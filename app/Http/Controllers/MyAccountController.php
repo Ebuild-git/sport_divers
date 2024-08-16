@@ -53,7 +53,7 @@ public function profile(){
 public function avatar(Request $request)
 {
     $request->validate([
-        'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'avatar' => 'required|image|max:2048',
     ]);
     $user = Auth::user();
     if ($user->avatar) {

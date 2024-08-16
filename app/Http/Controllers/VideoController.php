@@ -83,7 +83,8 @@ public function incrementViewCount($id)
             //'video' => 'required|file|mimetypes:*', // Accepte tous les formats
           //  'video' => 'required|file|max:1002400', // 100MB in kilobytes
            //'video' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime,video/x-ms-wmv,video/x-msvideo,video/x-flv,video/3gpp,video/3gpp2,video/webm,video/x-matroska|max:500000',
-         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+       //  'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+       'image' => 'required|image|max:4048',
      
          ]);
         $user= Auth::id();

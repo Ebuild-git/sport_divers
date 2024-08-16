@@ -60,7 +60,8 @@ public function create()
         'email' =>'required|email|unique:coaches,email',
         'phone' =>'required|numeric',
         'adresse' =>'required',
-        'photo' =>'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'photo' =>'nullable|image|max:4048',
+       // 'image' => 'required|image|max:4048',
         //'photo2' =>'required|image|mimes:jpeg,png,jpg|max:2048',
        
      

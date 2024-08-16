@@ -80,6 +80,7 @@ public function save()
       $this->resetInputFields();
 
     session()->flash('success', 'img$img ajouté avec succès');
+    return redirect()->route('images');
 }
 
     public function render()

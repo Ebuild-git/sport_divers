@@ -68,7 +68,8 @@ class SponsorController extends Controller
       {
           // Validation des données
           $validator = Validator::make($request->all(), [
-              'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+             'image' => 'required|image|max:4048',
               'titre' => 'required|string|max:255',
               'email' => 'required|email',
               'telephone' => 'nullable|string|max:20',

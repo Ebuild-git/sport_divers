@@ -331,15 +331,7 @@
                         data-ipad-device-dots2="false" data-md-device="3" data-md-device-nav="true"
                         data-md-device-dots="false">
                         @foreach ($latestVideos as $latestVideo)
-                            {{--  <div class="rs-video big-space  bdru-4 text-center" style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 300px; height: 200px; padding: 0px;">
-                    <div class="video-contents">
-                        <a class="popup-videos play-btn"
-                            onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video ?? '') }}')">
-                            <i class="fa fa-play"></i>
-                        </a>
-                        <h3 class="title white-color mt-18 mb-0">{{ $latestVideo->titre ?? '' }}</h3>
-                    </div>
-                </div> --}}
+                  
                             <div class="rs-video   bdru-4 text-center p-10"
                                 style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 
@@ -352,30 +344,6 @@
                                 </div>
                             </div>
 
-                          
-
-
-
-
-                            {{-- <div id="views-{{ $latestVideo->id }}" class=" items" style="background-image: url('{{ Storage::url($latestVideo->image) }}'); background-size: 150%;  background-position: center; padding: 0;width: 400px; height: 300px;">
-   
-                <a id="views-{{ $latestVideo->id }}" onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video) }}')">
-                  
-                    <div class="stadium" id="views-{{ $latestVideo->id }}">{{ $latestVideo->titre }}
-                    </div>
-                    <div class="teams">
-                        <div class="logo">
-                            <img  id="views-{{ $latestVideo->id }}" class="size-80"  alt="">
-                            <div class="name"></div>
-                        </div>
-                        <div class="score"></div>
-                        <div class="logo">
-                            <img  id="views-{{ $latestVideo->id }}"class="size-80" alt="">
-                            <div class="name"></div>
-                        </div>
-                    </div>
-                </a>
-            </div> --}}
                         @endforeach
 
                     </div>
@@ -488,8 +456,8 @@
                         @foreach ($images as $image)
                             <div class="col-lg-4 col-md-6 padding-0 sm-mb-30">
                                 <div class="gallery-grid"
-                                    style="background-image: url('{{ Storage::url($image->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                                    <a class="image-popup view-btn" href="{{ Storage::url($image->image) }}">
+                                    style="background-image: url('{{ Storage::url($image->image ?? ' ') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                    <a class="image-popup view-btn" href="{{ Storage::url($image->image ?? ' ') }}"  >
                                         <i class="flaticon-add-circular-button"></i>
                                     </a>
                                 </div>

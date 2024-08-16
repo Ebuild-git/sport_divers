@@ -153,30 +153,7 @@
                                                     <td colspan="9" class="text-center">Aucun video trouvé</td>
                                                 </tr>
 
-                                                <!-- Modal Structure -->
-                                                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="videoModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-
-                                                            </div>
-                                                            <div class="modal-body">
-                                                            <video id="videoPlayer" class="w-100 rounded shadow"
-                                                                    width="400" height="500" controls>
-
-                                                                    <source id="videoSource"
-                                                                        src="{{ Storage::url($video->video ?? ' ') }}"
-                                                                        type="video/mp4">
-
-
-                                                                    Votre navigateur ne supporte pas la balise vidéo.
-                                                                </video>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                             
                                             @endforelse
 
                                         </tbody>
