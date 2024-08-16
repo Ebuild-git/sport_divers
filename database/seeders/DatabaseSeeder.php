@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
 
 
          $cat = new config();
-        $cat->frais = '15';
+      //  $cat->frais = '15';
         $cat->description = 'Notre équipe de football Les Aigles est une équipe dynamique et talentueuse, connue pour son esprit de compétition et son jeu passionné. Fondée en 1990, notre équipe a rapidement gravi les échelons pour devenir une des équipes les plus respectées de la ligue.';
        $cat->telephone= '56399165';
        $cat->email='sportdivers@gmail.com';

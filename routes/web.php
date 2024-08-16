@@ -40,7 +40,9 @@ Route::post('/video/view/{id}', [VideoController::class, 'incrementViewCount'])-
 
 Route::get('contact', [ContactController::class, 'contact'])->name("contact");
 
-Route::get('about', [ContactController::class, 'about'])->name("about");
+
+Route::get('evenements', [EventController::class, 'evenements'])->name("evenements");
+
 
 Route::resource('contacts', ContactController::class, ['only' => ['create', 'store']]);
 Route::get('forgot-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forgot-password');
@@ -149,7 +151,6 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('permission:service_edit');
 
 
-        
     /////////////////////////Les marques//////////////////////////////////////
     Route::get('/admin/marques', [AdminController::class, 'marques'])
 
@@ -183,9 +184,11 @@ Route::middleware(['auth'])->group(function () {
           
          ////////////////////////Coachs/////////////////////
          Route::get('/admin/coachs', [CoachController::class, 'coachs'])
-            ->name('coachs')
-            ->middleware('permission:coach_view');
-            route::resource('videos', CoachController::class);
+            ->name('coachs');
+            Route::get('/admin/coach_update/{id}', [ CoachController::class, 'coach_update'])
+            ->name('coach_update');
+           
+            
             route::resource('coachs', CoachController::class);
             Route::get('/admin/coach_update/{id}', [CoachController::class, 'coach_update'])
             ->name('coach_update');
@@ -269,6 +272,10 @@ Route::post('import', [CustomerController::class, 'importExcelData']);
             ->name('details_commande');
     });
 
+
+
+    
+    
 
     Route::get('clients', [AdminController::class, 'clients'])
         ->name('clients')

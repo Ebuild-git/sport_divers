@@ -18,8 +18,6 @@
         <meta property="product:availability" content="{{ $produit->statut }}">
         <meta name="robots" content="index, follow">
     @endsection
-    <link rel="stylesheet" href="path/to/zoom.css">
-<script src="path/to/zoom.js"></script>
 </head>
 
 <main>
@@ -44,35 +42,9 @@
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="product-detail__slide-two">
-                                <style>
-                                    .product-detail__slide-two__big {
-                                        position: relative;
-                                        overflow: hidden;
-                                    }
-                                
-                                    .product-detail__slide-two__big .slider__item img {
-                                        transition: transform 0.3s ease;
-                                    }
-                                
-                                    .product-detail__slide-two__big .slider__item:hover img {
-                                        transform: scale(1.2); /* Ajustez le facteur de zoom ici */
-                                    }
-                                </style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var zoom = new Zoom({
-            selector: '.product-detail__slide-two__big img',
-            zoom: 2, // Facteur de zoom
-            width: 300, // Largeur de l'image zoomée
-            height: 300 // Hauteur de l'image zoomée
-        });
-    });
-</script>
-
                                 <div class="product-detail__slide-two__big">
                                     <div class="slider__item">
-                                        <img id="mainImage" src="{{ Storage::url($produit->photo) }}" width="200 " height="200 "
+                                        <img src="{{ Storage::url($produit->photo) }}" width="300 " height="300 "
                                             border-radius="8px" alt="Product image" />
 
 
@@ -91,20 +63,6 @@
 
                                     </div>
                                 </div>
-
-                                <div class="product-detail__slide-two__small" style="display: flex; gap: 10px; margin-top: 10px;">
-    
-                                    @foreach (json_decode($produit->photos) ?? [] as $image)
-                                        <div class="slider__item">
-                                            <img onclick="changeMainImage('{{ Storage::url($image) }}')" src="{{ Storage::url($image) }}" width="100" height="100" style="border-radius: 8px;" alt="Additional product image" />
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <script>
-                                    function changeMainImage(imageUrl) {
-                                        document.getElementById('mainImage').src = imageUrl;
-                                    }
-                                </script>
 
                             </div>
                         </div>
@@ -252,8 +210,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 </main>

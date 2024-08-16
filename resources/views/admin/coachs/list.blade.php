@@ -79,13 +79,14 @@
                                     <table id="basic-datatable" class="datatables-users table" {{-- class="table table-striped dt-responsive nowrap w-100" --}}>
                                         <thead class="table-dark cusor">
                                             <tr>
-                                                <th>Logo</th>
+                                                <th>Photo</th>
                                                 <th>Nom</th>
+                                                 <th>Prénom</th>
 
 
                                                 <th>Email</th>
                                                 <th>Téléphone</th>
-                                                <th>Date de création</th>
+                                              
                                                 <th scope="col" width="15%">Actions</th>
 
                                                 <th style="text-align: right;">
@@ -103,17 +104,20 @@
                                             @forelse ($coachs as $coach)
                                                 <tr>
                                                     <td>
-                                                        <img src="{{ Storage::url($coach->image) }}" width="40 "
+                                                        <img src="{{ Storage::url($coach->photo ?? ' ') }}" width="40 "
                                                             height="40 " class="rounded shadow" alt="">
                                                     </td>
                                                     <td>
-                                                        {{ $coach->titre }}
+                                                        {{ $coach->nom }}
                                                     </td>
+                                                     <td>{{ $coach->prenom }}</td>
+                                                     
+
 
 
                                                     <td>{{ $coach->email }} </td>
-                                                    <td>{{ $coach->telephone }}</td>
-                                                    <td>{{ $coach->created_at }} </td>
+                                                    <td>{{ $coach->phone }}</td>
+                                                    
                                                     <td>
 
                                                         <div class="row">
@@ -194,7 +198,10 @@
                     </h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                @livewire('coachs.Addcoach', ['coach' => null])
+                 @livewire('coachs.Addcoach', ['coach' => null]) 
+
+
+
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>

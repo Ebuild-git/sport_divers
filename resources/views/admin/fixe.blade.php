@@ -61,8 +61,7 @@
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/js/config.js"></script>
-    <script src="/app-calendar.js"></script>
-    <script src="/app-calendar-events.js"></script>
+  
 
     @yield('header')
 
@@ -297,6 +296,16 @@
                             </li>
 
                         </ul>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('coachs') }}" class="menu-link">
+                                    <div data-i18n="Liste des coachs">Liste des coachs</div>
+                                </a>
+                            </li>
+
+                        </ul>
+
 
                       
                     </li>
@@ -706,8 +715,6 @@
     <!-- Page JS -->
     <script src="/../../assets/js/app-academy-dashboard.js"></script>
 
-    <script src="../../assets/js/app-calendar-events.js"></script>
-    <script src="../../assets/js/app-calendar.js"></script>
 
     @stack('scripts')
 

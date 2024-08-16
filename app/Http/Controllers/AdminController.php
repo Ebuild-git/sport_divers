@@ -133,7 +133,8 @@ class AdminController extends Controller
         $latestVideos = Video::orderBy('created_at', 'desc')
             ->take(5)
             ->get();
-
+            $lastevents = Event::latest()->take(5)->get();
+            $lastevent = Event::latest()->take(1)->get();
             $latestVideo = Video::orderBy('created_at', 'desc')->first();
          
 
@@ -155,7 +156,7 @@ class AdminController extends Controller
             ->with('total_visites', $total_visites)  
             ->with('inscriptionMonth', $inscriptionMonth);        */
            // return('admin.index' , compact('total_visites', 'inscriptionMonth','totalUser','videosPerMonth','totalUsers','totalVideos','totalEvents','totalSponsors'));
-           return view('admin.index' , compact('latestVideo','videosVues','latestVideos','total_visites', 'inscriptionMonth','totalUser','videosPerMonth','topUsers','totalVideos','totalEvents','totalSponsors'));
+           return view('admin.index' , compact('lastevents','lastevent','latestVideo','videosVues','latestVideos','total_visites', 'inscriptionMonth','totalUser','videosPerMonth','topUsers','totalVideos','totalEvents','totalSponsors'));
     }
 
 

@@ -51,7 +51,7 @@
                     <h1 class="breadcrumbs-title mb-17">Contact</h1>
                     <div class="categories">
                         <ul>
-                            <li><a href="{{  route('home') }}">Accuei</a></li>
+                            <li><a href="{{  route('home') }}">Accueil</a></li>
                             <li class="active">Contact</li>
                         </ul>
                     </div>
@@ -135,6 +135,8 @@
                                 </div>
                                 <div id="form-messages"></div>
                                 @livewire('Front.ContactForm')
+
+                         
 
                             </div>
                         </div>

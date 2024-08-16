@@ -11,6 +11,10 @@
                         <div class="tp-error-content-box text-center">
                             @livewire('Front.ForgetPassword')
                         </div>
+       
+             
+             
+             
                     </div>
                 </div>
             </div>

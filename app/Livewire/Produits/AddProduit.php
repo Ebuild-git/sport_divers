@@ -60,7 +60,7 @@ class AddProduit extends Component
             'reference' => 'required|string|unique:produits,reference',
             'prix' => 'required|numeric|gt:prix_achat',
             'prix_achat' => 'required|numeric',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,webp',
+            'photo' =>  'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'photos.*' => 'nullable|image|mimes:jpg,jpeg,png,webp',
             'category_id' => 'required|integer|exists:categories,id',
            // 'marque_id' => 'nullable|integer|exists:marques,id',

@@ -17,6 +17,12 @@ class EventController extends Controller
     return view('admin.evenements.list', compact('events') );
 }
 
+public function evenements(){
+    $events = Event::all();
+    $lastevents = Event::latest()->take(8)->get();
+    return view('front.evenements.evenement', compact('events', 'lastevents') );
+}
+
 public function calendar(){
     $events = Event::all();
     return view('admin.evenements.calendar', compact('events') );

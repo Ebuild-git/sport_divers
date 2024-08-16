@@ -80,8 +80,7 @@
                         <div class="avatar avatar-lg">
                             <div class="avatar-initial bg-label-warning rounded">
                                 <div>
-                                    {{-- <img src="../../assets/svg/icons/check.svg" alt="Check"
-                                        class="img-fluid" /> --}}
+                                   
                                         <span class="avatar-initial rounded bg-label-primary"><i
                                             class="ti ti-video ti-lg"></i></span>
                                 </div>
@@ -105,14 +104,14 @@
                         </div>
                         <div class="content-right">
                             <p class="mb-0 fw-medium">Total  évènements</p>
-                            <h4 class="text-warning mb-0">{{ $totalEvents ?? '' }}</h4>
+                            <h4 class="text-warning mb-0">{{ $totalEvents ?? ' ' }}</h4>
                         </div>
                     </div>
 
 
                 </div>
             </div>
-             <div class="col-12 col-lg-4 ps-md-4 ps-lg-6">
+           {{--   <div class="col-12 col-lg-4 ps-md-4 ps-lg-6">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <div>
@@ -127,7 +126,7 @@
                     </div>
                     <div id="leadsReportChart"></div>
                 </div>
-            </div>
+            </div> --}}
             <div id="chart3" data-values="@json($inscriptionMonth)"></div>
         </div>
     </div>
@@ -196,13 +195,15 @@
         <div class="col-xxl-4 col-md-6">
           
             <div class="card h-100">
+                @foreach ($lastevent as $event )
+                @if($lastevent)
                 <div class="card-body">
                     <div class="bg-label-primary rounded text-center mb-4 pt-4">
                         <img class="img-fluid"
-                            src="../../assets/img/illustrations/girl-with-laptop.png"
+                           src="{{ Storage::url($event->image ?? ' ') }}"
                             alt="Card girl image" width="140" />
                     </div>
-                    <h5 class="mb-2">titre</h5>
+                    <h5 class="mb-2">{{ $event->titre }}</h5>
                     <p class="small">
                       {{--   {{ $lastestVideo->created_at }} --}}
                     
@@ -216,7 +217,7 @@
                                 </div>
                                 <div>
                                     <h6 class="mb-0 text-nowrap"></h6>
-                                    <small>Date</small>
+                                    <small>{{ $event->created_at }}</small>
                                 </div>
                             </div>
                         </div>
@@ -226,16 +227,20 @@
                                     <span class="avatar-initial rounded bg-label-primary"><i
                                             class="ti ti-clock ti-28px"></i></span>
                                 </div>
-                                <div>
+                               {{--  <div>
                                     <h6 class="mb-0 text-nowrap">32 minutes</h6>
                                     <small>Duration</small>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0);" class="btn btn-primary w-100">Voir video
+                    <a href="javascript:void(0);" class="btn btn-primary w-100">Evènement en cours
                         </a>
-                </div>
+                </div>  
+                @endif
+                    
+                @endforeach
+                
             </div>
          
             
@@ -245,54 +250,44 @@
         </div>
         <!--/ Upcoming Webinar -->
 
-        <!-- Assignment Progress -->
+     
         <div class="col-xxl-4 col-lg-6">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Les tops 5  </h5>
+                        <h5 class="m-0 me-2">Les derniers évènements  </h5>
                     </div>
                     <div class="dropdown">
-                       {{--  <button
-                            class="btn btn-text-secondary rounded-pill text-muted border-0 p-2 me-n1"
-                            type="button" id="popularInstructors" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="ti ti-dots-vertical ti-md text-muted"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="popularInstructors">
-                            <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                        </div> --}}
+                    
                     </div>
                 </div>
                 <div class="px-5 py-4 border border-start-0 border-end-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="mb-0 text-uppercase">Coachs</p>
-                        <p class="mb-0 text-uppercase">Videos</p>
+                       {{--  <p class="mb-0 text-uppercase">Evènements</p> --}}
+                       {{--  <p class="mb-0 text-uppercase">Videos</p> --}}
                     </div>
                 </div>
                 <div class="card-body">
 
               
 
-                    @foreach($topUsers as $user)
+                    @foreach($lastevents as $event)
                     <div class="d-flex justify-content-between align-items-center mb-6">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar me-4">
-                                <img src="../../assets/img/avatars/1.png" alt="Avatar"
+                           
+                                <img src="{{ Storage::url($event->image ?? ' ') }}"  alt="Avatar"
                                     class="rounded-circle" />
                             </div>
                             <div>
                                 <div>
-                                    <h6 class="mb-0 text-truncate">{{ $user->nom ?? ' ' }}</h6>
-                                    <small class="text-truncate text-body">{{ $user->role ?? ' ' }}</small>
+                                    <h6 class="mb-0 text-truncate">{{ $event->titre ?? ' ' }}</h6>
+                                    {{-- <small class="text-truncate text-body">{{ $user->role ?? ' ' }}</small> --}}
                                 </div>
                             </div>
                         </div>
                         <div class="text-end">
-                            <h6 class="mb-0">{{ $user->videos_count }}</h6>
+                         {{--    <h6 class="mb-0">{{ $user->videos_count }}</h6> --}}
                         </div>
                     </div>
                     @endforeach

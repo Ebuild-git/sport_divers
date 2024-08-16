@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 //require './vendor/autoload.php';
 
 
-use App\Models\{commandes,config, User,produits, Category, Service,Marque, Video,Event, Sponsor,Image};
+use App\Models\{commandes,config,Coach, User,produits, Category, Service,Marque, Video,Event, Sponsor,Image};
 use App\Models\Banners;
 use App\Models\templates;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -34,6 +34,7 @@ class HomeController extends Controller
        $events = Event::select('*')->latest()->take(20)->get();
        $images = Image::select('*')->latest()->take(20)->get();
        $sponsors =Sponsor::select('*')->latest()->take(20)->get();
+       $coachs = Coach::select('*')->latest()->take(20)->get();
 
        $latestVideos = Video::orderBy('created_at', 'desc')
        ->take(20)
@@ -45,7 +46,7 @@ class HomeController extends Controller
        $banners = Banners::select("titre","sous_titre","image")->get();
 
        $services = Service::all();
-      return view('front.index', compact('latestVideos','lastVideo','produits','configs','banners','services','key','videos','images','sponsors','events'));
+      return view('front.index', compact('coachs','latestVideos','lastVideo','produits','configs','banners','services','key','videos','images','sponsors','events'));
 
     }
      

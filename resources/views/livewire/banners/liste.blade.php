@@ -21,12 +21,24 @@
                     <div class="text-center">
                         <a href="{{ route('banner.update',['id'=>$banner->id]) }}">
                          {{--    <i class="ri-edit-2-line"></i> --}}
-                            Modifier
+                         <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24" width="45" hight="48"
+                         fill="currentColor">
+                         <path
+                             d="M16.7574 2.99677L9.29145 10.4627L9.29886 14.7098L13.537 14.7024L21 7.23941V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99677C3 3.44448 3.44772 2.99677 4 2.99677H16.7574ZM20.4853 2.09727L21.8995 3.51149L12.7071 12.7039L11.2954 12.7063L11.2929 11.2897L20.4853 2.09727Z">
+                         </path>
+                     </svg> 
                         </a>
 
                         <button type="button" style="font-size: 10px;" class="btn btn-sm btn-danger confirm" onclick="confirmDeletion({{ $banner->id }})" wire:click="delete({{ $banner->id }})" {{-- wire:confirm="Supprimer" --}}>
-                          
-                            Supprimer
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" width="20"
+                            style="background-color: #e0610d22; fill:#dbd7d7;"
+                            height="22" fill="currentColor">
+                            <path
+                                d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM13.4142 11L15.8891 8.52513L14.4749 7.11091L12 9.58579L9.52513 7.11091L8.11091 8.52513L10.5858 11L8.11091 13.4749L9.52513 14.8891L12 12.4142L14.4749 14.8891L15.8891 13.4749L13.4142 11Z">
+                            </path>
+                        </svg>     
                         </button>
                     </div>
                 </div>

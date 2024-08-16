@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
+            $table->string('nom')->nullable();
+            $table->string('prenom')->nullable();
+            $table->date('date_naissance')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('photo')->nullable();
+
             $table->timestamps();
         });
     }

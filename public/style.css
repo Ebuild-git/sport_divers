@@ -1668,7 +1668,7 @@ blockquote i:before {
   max-width: 500px;
 }
 .rs-banner.home5banner {
-  background: url(images/banner/home5-banner.jpg);
+ /*  background: url(images/banner/home5-banner.jpg); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

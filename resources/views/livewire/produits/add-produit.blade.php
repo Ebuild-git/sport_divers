@@ -97,6 +97,14 @@
                 @enderror
             </div>
 
+            <div class="mb-3">
+                <label for="">Autres photos</label>
+                <input type="file" multiple name="photos" accept="image/*" class="form-control" wire:model="photos">
+                @error('photos')
+                    <span class="text-danger small"> {{ $message }} </span>
+                @enderror
+            </div>
+
         </div>
     </div>
     <div style="text-align: right;">
