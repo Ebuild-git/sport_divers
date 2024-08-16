@@ -52,9 +52,10 @@
                 <h2 class="title"><span class="primary-color"></span> {{ $banner->titre ?? '' }}</h>
                 <br>
                 <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div>
+                <br><br>
                 <div class="text-part common">
                     {{-- <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
-                  {{--   <h1 class="title"><span class="primary-color">Sport</span> Divers</h1> --}}
+                     <h1 class="title"><span class="primary-color">Sport</span> Divers</h1> 
                    {{--  <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div> --}}
                     <div class="slider-btn">
                         <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
