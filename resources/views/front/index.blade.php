@@ -67,6 +67,8 @@
                         </div>
                     </div>
                 </div>
+
+                
                 <div class="col-lg-7 margin-0 pl-50 col-padding-md">
                     <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="3000">
                         <div class="carousel-inner">
