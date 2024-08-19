@@ -277,7 +277,7 @@
                         @foreach ($latestVideos as $latestVideo)
                             
                             <div class="rs-video   bdru-4 text-center p-10"
-                                style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
+                                style="background-image: url('{{ Storage::url($latestVideo->path ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 
                                 <div class="video-contents">
                                     {{--  @if($lastVideo->path)
@@ -288,9 +288,29 @@
                                     @endif  --}} 
                                       @if($latestVideo->path ?? '')
                                     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-                                        <iframe src="{{ $latestVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+                                        <iframe   id="video-player" src="{{ $latestVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     @endif  
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            const videoPlayers = document.querySelectorAll('iframe.video-player');
+                                            
+                                            videoPlayers.forEach(video => {
+                                                video.addEventListener('load', function() {
+                                                    // When a video starts to play, pause other videos
+                                                    videoPlayers.forEach(otherVideo => {
+                                                        if (otherVideo !== video) {
+                                                            const src = otherVideo.src;
+                                                            otherVideo.src = '';
+                                                            otherVideo.src = src;
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        });
+                                        </script>
+                                        
+                                        
 {{-- 
                                     @if($lastVideo->path)
     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
