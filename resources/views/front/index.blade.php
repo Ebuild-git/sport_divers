@@ -280,18 +280,18 @@
                                 style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 
                                 <div class="video-contents">
-                                   {{--  @if($lastVideo->path)
+                                    {{--  @if($lastVideo->path)
                                     <a class="popup-videos play-btn"
                                     onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->path ?? '') }}')">
                                     <i class="fa fa-play"></i>
                                 </a>
-                                    @endif  --}}
-                                   {{--  @if($lastVideo->path ?? '')
+                                    @endif  --}} 
+                                      @if($latestVideo->path ?? '')
                                     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-                                        <iframe src="{{ $lastVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+                                        <iframe src="{{ $latestVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
                                     </div>
-                                    @endif  --}}
-
+                                    @endif  
+{{-- 
                                     @if($lastVideo->path)
     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
         @if(Str::contains($lastVideo->path, 'youtube.com/embed/'))
@@ -308,7 +308,7 @@
             </video>
         @endif
     </div>
-@endif
+@endif --}}
 
 
                               
