@@ -220,7 +220,7 @@
                     </h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                @livewire('coachs.Editcoach', ['coach' => null])
+                @livewire('coachs.EditCoach', ['coach' => null])
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
