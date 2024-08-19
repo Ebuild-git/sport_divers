@@ -101,7 +101,11 @@
 
 
                                         <tbody>
-                                            @forelse ($coachs as $coach)
+                                           
+                                            @foreach  ($coachs as $coach)
+                                            @if($coachs)
+                                                
+                                         
                                                 <tr>
                                                     <td>
                                                         <img src="{{ Storage::url($coach->photo ?? ' ') }}" width="40 "
@@ -158,11 +162,11 @@
 
 
                                                 </tr>
-                                            @empty
+                                                @endif
                                                 <tr>
                                                     <td colspan="9" class="text-center">Aucun coach trouvé</td>
                                                 </tr>
-                                            @endforelse
+                                            @endforeach
 
                                         </tbody>
 

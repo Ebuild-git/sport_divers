@@ -62,11 +62,17 @@
                                                         alt=""></a>
                                             </div>
                                             <div class="all-meta">
+
                                                 <div class="meta meta-date">
-                                                    {{-- span class="month-day">25</span>
-                                            <span class="month-name">May</span> --}}
-                                                    {{ $event->created_at }}
+                                                    <span class="month-day">{{ $event->created_at->format('d') }}</span>
+                                                    <span class="month-name">{{ $event->created_at->translatedFormat('F') }}</span>
                                                 </div>
+                                                
+                                               {{--  <div class="meta meta-date">
+                                                     span class="month-day">25</span>
+                                            <span class="month-name">May</span> 
+                                                   
+                                                </div> --}}
                                                 {{--   <div class="meta meta-author">
                                             <i class="flaticon-user-1"></i>
                                             <span class="author">admin</span>

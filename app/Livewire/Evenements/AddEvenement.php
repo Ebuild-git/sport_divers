@@ -16,7 +16,7 @@ class AddEvenement extends Component
     use WithFileUploads;
   
 
-    public $titre, $description, $email,  $image , $image2;
+    public $titre, $description, $email,  $image , $image2 ,$start, $end;
     public $updateMode = false;
 
     public function mount($event){
@@ -24,6 +24,9 @@ class AddEvenement extends Component
             $this->event = $event;
             $this->titre = $event->titre;
             $this->description = $event->description;
+           // $this->email = $event->email;
+          //  $this->start = $event->start;
+           $this->end = $event->end;
            
             $this->image2 = $event->image;
            
@@ -38,6 +41,8 @@ private function resetInputFields(){
 
     $this->image = '';
     $this->image2 = '';
+    $this->start = '';
+    $this->end = '';
    
 }
 
@@ -71,6 +76,9 @@ public function create()
      
       $event->titre = $this->titre;
       $event->description = $this->description;
+    //  $event->email = $this->email;
+   //   $event->start = $this->start;
+      $event->end = $this->end;
      
       //  if($this->image){
           $event->image = $this->image->store('events', 'public');

@@ -219,9 +219,16 @@
                     <div class="col-lg-8 pl-30 col-padding-md">
                         <div class="rs-video rs-upcoming-match big-space bg1 bdru-4 text-center">
                             <div class="video-contents">
-                                <a class="popup-videos play-btn"
-                                    onclick="playVideoInSmallPlayer('{{ Storage::url($lastVideo->video ?? '') }}')"><i
-                                        class="fa fa-play"></i></a>
+                                {{-- <a class="popup-videos play-btn"
+                                    onclick="playVideoInSmallPlayer('{{ Storage::url($lastVideo->path ?? '') }}')"><i
+                                        class="fa fa-play"></i>  </a> --}}
+
+                                        @if($lastVideo->path ?? '')
+                                        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+                                            <iframe src="{{ $lastVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        @endif
+                                        
                                 <h3 class="title white-color mt-18 mb-0">{{ $lastVideo->tittre ?? '' }}</h3>
                             </div>
                         </div>
@@ -351,10 +358,13 @@
                                 style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 
                                 <div class="video-contents">
+                                    @if($lastVideo->path)
                                     <a class="popup-videos play-btn"
-                                        onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video ?? '') }}')">
-                                        <i class="fa fa-play"></i>
-                                    </a>
+                                    onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->path ?? '') }}')">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                                    @endif
+                                    
                                     <h3 class="title white-color">{{ $latestVideo->titre ?? '' }}</h3>
                                 </div>
                             </div>

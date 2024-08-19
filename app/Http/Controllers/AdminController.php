@@ -69,10 +69,10 @@ class AdminController extends Controller
 
             elseif (auth()->user()->can('sponsor_view')) 
          { return redirect()->route('sponsors');}
-         elseif (auth()->user()->can('event_view')) 
-         { return redirect()->route('events');}
+         
          elseif (auth()->user()->can('video_view')) 
          { return redirect()->route('videos');}
+         
          
             elseif (auth()->user()->can('order_view')) {
             return redirect()->route('commandes');

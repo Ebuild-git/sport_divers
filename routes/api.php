@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\api;
-use App\Http\Controllers\API\ContactController;
+use App\Http\Controllers\API\{ContactController,
+EventController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,9 @@ Route::prefix('contacts')->group(function () {
 
    
 });
+Route::prefix('events')->group(function () {
+    Route::get('/', [EventController::class, 'events']);
 
+   
+});
 

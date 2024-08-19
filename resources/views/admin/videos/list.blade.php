@@ -90,10 +90,16 @@
 
                                                     <td>
 
-                                                        <button type="button" class="btn btn-primary"
+                                                        {{-- <button type="button" class="btn btn-primary"
                                                             onclick="openModal('{{ Storage::url($video->video ?? ' ') }}')">Lire
                                                             la
-                                                            vidéo</button>
+                                                            vidéo</button> --}}
+
+                                                            @if($video->path)
+    <div class="video-container">
+        <iframe width="200" height="195" src="{{ $video->path }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+@endif
 
 
 
@@ -225,9 +231,9 @@
 
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label for="video" class="form-label">Vidéo *</label>
-                                    <input type="file" id="video" name="video" class="form-control">
-                                    @error('video')
+                                    <label for="path" class="form-label"> Ajouter le lien de la Vidéo *</label>
+                                    <input type="url" id="path" name="path" class="form-control">
+                                    @error('path')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

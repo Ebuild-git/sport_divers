@@ -76,46 +76,62 @@ public function incrementViewCount($id)
 
     public function uploadVideo(Request $request)
     {
-         $this->validate($request, [
+          $this->validate($request, [
              'titre' => 'required|string|max:255',
              'description' => 'required|string|max:255',
-             'video' => 'required|file|mimetypes:video/*',
-            //'video' => 'required|file|mimetypes:*', // Accepte tous les formats
-          //  'video' => 'required|file|max:1002400', // 100MB in kilobytes
-           //'video' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime,video/x-ms-wmv,video/x-msvideo,video/x-flv,video/3gpp,video/3gpp2,video/webm,video/x-matroska|max:500000',
-       //  'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-       'image' => 'required|image|max:4048',
+             'video' => 'nullable|file|mimetypes:video/*',
+             'path' => 'nullable|url',
+             'image' => 'required|image|max:4048',
      
          ]);
         $user= Auth::id();
-         $fileName = $request->video->getClientOriginalName();
-         $filePath = 'videos/' . $fileName;
+        $videoUrl = $request->input('path');
+        $embedUrl = preg_replace('/^.*v=([^&]*).*$/', 'https://www.youtube.com/embed/$1', $videoUrl);
+        $validatedData['path'] = $embedUrl;
+        
   
-         $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->video));
-         $url = Storage::disk('public')->url($filePath);
-  
-         if ($isFileUploaded) {
              $video = new Video();
              $video->titre = $request->titre;
              $video->description = $request->description;
             $video->image = $request->image->store('images', 'public');
-             $video->video = $filePath;
+            // $video->video = $filePath;
+           $video->path =$embedUrl;
+
+             
+            $video->save();
              $video->user_id = $user;
              
             $video->save();
-  //dd($video);
+  
              return back()
              ->with('success','Video has been successfully uploaded.');
-         }
-  
-         return back()
-             ->with('error','Unexpected error occured');
+         
+/* 
+         $validatedData = $request->validate([
+            'titre' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'path' => 'nullable|url', 
+            'auteur' => 'nullable|string|max:255',
+            'categorie_id' => 'nullable|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        
+$videoUrl = $request->input('path');
+$embedUrl = preg_replace('/^.*v=([^&]*).*$/', 'https://www.youtube.com/embed/$1', $videoUrl);
+$validatedData['path'] = $embedUrl;
+
+    
+        
+        $video = Video::create($validatedData);
+    
+        return back()
+        ->with('success','Video has been successfully uploaded.' *///);
      }
 
   
 
  
-    public function update(Request $request, $id)
+    public function update1(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'video' => 'nullable|mimes:mp4,avi,mov|max:20480', // max 20MB
@@ -158,6 +174,23 @@ public function incrementViewCount($id)
 
         return redirect()->back()->with('success', 'Vidéo mise à jour avec succès !');
     }
+    public function update(Request $request, Video $video)
+{
+    $validatedData = $request->validate([
+        'titre' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'path' => 'nullable|url', // Validation pour les URL
+        'auteur' => 'nullable|string|max:255',
+       // 'categorie_id' => 'nullable|exists:categories,id',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Mise à jour des informations de la vidéo
+    $video->update($validatedData);
+
+    return redirect()->back()->with('success', 'Vidéo mise à jour avec succès !');
+}
+
 
     
     public function destroy($id)

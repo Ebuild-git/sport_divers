@@ -60,10 +60,10 @@ class DatabaseSeeder extends Seeder
         'image_edit',
         'image_delete',
 
-        'event_view',
-        'event_add',
-        'event_edit',
-        'event_delete',
+    //    'event_view',
+     // //  'event_add',
+       // 'event_edit',
+      //  'event_delete',
 
 
 

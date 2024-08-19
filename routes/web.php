@@ -174,11 +174,11 @@ Route::middleware(['auth'])->group(function () {
 
         /////////////////// events ////////////////////////////////////////
         Route::get('/admin/events', [EventController::class, 'events'])
-            ->name('events')
-            ->middleware('permission:event_view');
+            ->name('events');
+            
             route::resource('events', EventController::class);
-            Route::get('calendar', [ EventController::class, 'calendar' ])->name('calendar');
-   
+          
+                                                            
         Route::get('/admin/event_update/{id}', [ EventController::class, 'event_update'])
             ->name('event_update');
           

@@ -23,6 +23,19 @@
                     </div>
 
 
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="start" class="form-label">
+                                Date fin de  l'évènement *
+                            </label>
+                            <input type="date" id="end" wire:model="end" class="form-control">
+                            @error('end')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+
 
 
 
@@ -36,6 +49,7 @@
                             @enderror
                         </div>
                     </div>
+
 
 
                     <div class="col-sm-6">

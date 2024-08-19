@@ -57,16 +57,16 @@
                                                     id="plyr-video-player"
                                                     playsinline
                                                     controls>
-                                                    <source src="{{ Storage::url($video->video) }}" type="video/mp4">
+                                                    <source src="{{ Storage::url($video->path) }}" type="video/mp4">
                                                   </video>
                                                 </div>
                                               </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="mb-3">
-                                                <label for="">Nouvelle video</label>
-                                                <input type="file" name="video"    class="form-control">
-                                                @error('photo')
+                                                <label for="">Nouveau lien</label>
+                                                <input type="url" name="path"    class="form-control">
+                                                @error('path')
                                                     <span class="small text-danger"> {{ $message }} </span>
                                                 @enderror
                                             </div>
