@@ -67,64 +67,7 @@
 
     </div>
 </div>
-     {{-- 
-     <div id="rs-banner" class="rs-banner home5banner">
-        <div class="container">
-            <div id="rs-banner-slide"> 
-                @foreach($banners as $banner) 
-                <div class="item" style="background-image: url('{{ asset('storage/' . $banner->image) }}'); background-size:cover; background-position: center; width: 800px; height: 800px;">
-    
-                    <div class="bl-meta">
-                        <span class="cat"><a href="#">{{ $banner->titre }}</a></span>
-                      
-                    </div>
-                    <div class="heading-block pb-25">
-                        <h4 class="feature-title"><a href="#">{{ $banner->sous_titre }}</a></h4>
-                    </div>
-                </div>
-                @endforeach
-              
-            </div>
-        </div>
-    </div> --}}
-    
-        <!-- Slider Section Start -->
-       {{--   <div id="rs-slider" class="rs-slider home-slider slider-navigation">
-
-            <div class="slider-carousel owl-carousel">
-                @foreach ($banners as $banner)
-                    <div class="single-slider slide2"
-                        style="background-image: url('{{ Storage::url($banner->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                        <div class="container">
-                            <div class="image-part common">
-                                <div class="image-wrap">
-                                    <img class="player animate5" src="{{ Storage::url($banner->image) }}" alt="">
-                                    <img class="ball animate6" src="{{ Storage::url($banner->image) }}" alt="">
-                                </div>
-                            </div>
-                            <div class="text-part common">
-                                <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2>
-                                <h1 class="title"><span class="primary-color">Sport</span> Divers</h1>
-                                <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div>
-                                <div class="slider-btn">
-                                    <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Précédent</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Suivant</span>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-        </div>  --}}
-        <!-- Slider Section End -->
+     
 
 
         <!-- About Us Section Start -->
@@ -241,6 +184,7 @@
         <!-- Petit Lecteur Vidéo Fixe -->
         <div id="smallVideoPlayer" class="small-video-player">
             <video id="smallVideo" controls></video>
+            
             <button class="close-btn" onclick="closeSmallVideoPlayer()">X</button>
         </div>
 
@@ -251,20 +195,6 @@
                 video.src = videoUrl;
                 player.style.display = 'block';
 
-
-                fetch(`/video/view/${videoId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Ensure CSRF protection
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Update the view count on the page
-                        document.getElementById(`views-${videoId}`).innerText = data.views + ' vues';
-                    })
-                    .catch(error => console.error('Error:', error));
             }
 
 
@@ -345,27 +275,62 @@
                         data-ipad-device-dots2="false" data-md-device="3" data-md-device-nav="true"
                         data-md-device-dots="false">
                         @foreach ($latestVideos as $latestVideo)
-                            {{--  <div class="rs-video big-space  bdru-4 text-center" style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 300px; height: 200px; padding: 0px;">
-                    <div class="video-contents">
-                        <a class="popup-videos play-btn"
-                            onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->video ?? '') }}')">
-                            <i class="fa fa-play"></i>
-                        </a>
-                        <h3 class="title white-color mt-18 mb-0">{{ $latestVideo->titre ?? '' }}</h3>
-                    </div>
-                </div> --}}
+                            
                             <div class="rs-video   bdru-4 text-center p-10"
                                 style="background-image: url('{{ Storage::url($latestVideo->image ?? '') }}'); background-size: cover; background-position: center; width: 400px; height: 300px; padding: 0px;">
 
                                 <div class="video-contents">
-                                    @if($lastVideo->path)
+                                   {{--  @if($lastVideo->path)
                                     <a class="popup-videos play-btn"
                                     onclick="playVideoInSmallPlayer('{{ Storage::url($latestVideo->path ?? '') }}')">
                                     <i class="fa fa-play"></i>
                                 </a>
-                                    @endif
+                                    @endif  --}}
+                                   {{--  @if($lastVideo->path ?? '')
+                                    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+                                        <iframe src="{{ $lastVideo->path }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    @endif  --}}
+
+                                    @if($lastVideo->path)
+    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        @if(Str::contains($lastVideo->path, 'youtube.com/embed/'))
+            <!-- YouTube Video -->
+            <iframe src="{{ $lastVideo->path }}" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                    frameborder="0" allowfullscreen>
+            </iframe>
+        @else
+            <!-- Local Video -->
+            <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <source src="{{ Storage::url($lastVideo->path) }}" type="video/mp4">
+                Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+        @endif
+    </div>
+@endif
+
+
+                              
+                                
+ 
+
+{{--  <div class="col-lg-8 pl-30 col-padding-md">
+    <div class="rs-video big-space bg2 bdru-4 text-center">
+        <div class="video-contents">
+            <a class="popup-videos play-btn" href="https://www.youtube.com/watch?v=t17O6JoU2Ew"><i class="fa fa-play"></i></a>
                                     
-                                    <h3 class="title white-color">{{ $latestVideo->titre ?? '' }}</h3>
+                                    
+            <h3 class="title white-color mt-18 mb-0">{{ $latestVideo->titre ?? '' }}</h3>
+        </div>
+    </div>
+</div> --}}
+
+
+
+
+                                    
+                                   {{--  <h3 class="title white-color">{{ $latestVideo->titre ?? '' }}</h3> --}}
                                 </div>
                             </div>
 
