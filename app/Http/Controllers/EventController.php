@@ -64,52 +64,7 @@ public function calendar(){
         return view('admin.evenements.update', compact('event'));
     }
 
-    public function update1(UpdateEventRequest $request, $id)
-    {
-          // Validation des données
-        $validator = Validator::make($request->all(), [
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ], [
-            'image.mimes' => 'Le format de l\'image doit être jpeg, png, jpg ou gif.',
-            'image.max' => 'La taille de l\'image ne doit pas dépasser 2MB.',
-            'titre.required' => 'Le titre est requis.',
-            'titre.max' => 'Le titre ne doit pas dépasser 255 caractères.',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Mettre à jour l'évènement
-        
-
-        $event = Event::find($id);
-        $event->titre = $request->titre;
-        $event->description= $request->description;
-       // $event ->image= $request->image;
-     
-        if ($request->hasFile('image')) {
-            // Supprimer l'image si elle existe déjà
-            if($event->image){
-                Storage::disk('public')->delete($event->image); 
-            }
-
-            // Upload de l'image
-            $image = $request->file('image');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->storeAs('public/images', $imageName);
-
-            $event->image = $imageName;
-        }
-
-        $event->save();
-
-      
-        return redirect()->back()->with('success', 'Evènement mis à jour avec succès !');
-
-    }
+   
 
      
     public function update(Request $request, $id)
@@ -145,24 +100,22 @@ public function calendar(){
                 Storage::delete($sponsor->image);
             }
 
-            // Stocker la nouvelle image
-            $path = $request->file('image')->store('sponsors', 'public');
+           
+            $path = $request->file('image')->store('evenments', 'public');
             $sponsor->image = $path;
         }
 
-        // Mettre à jour les autres champs
+        
         $sponsor->titre = $request->input('titre');
         $sponsor->description = $request->input('description');
         $sponsor->start = $request->input('start');
         $sponsor->end = $request->input('end');
 
       
-        // Sauvegarder les modifications
         $sponsor->save();
 
-        // Rediriger avec un message de succès
-        return redirect()->back()->with('success', 'Sponsor mis à jour avec succès !');
-     // return redirect()->route('sponsors')->with('success', 'Sponsor mis à jour avec succès!');
+        return redirect()->back()->with('success', 'Evènement mis à jour avec succès !');
+    
     }
 
 

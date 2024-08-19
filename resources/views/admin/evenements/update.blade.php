@@ -55,6 +55,14 @@
                                                     <span class="small text-danger"> {{ $message }} </span>
                                                 @enderror
                                             </div>
+
+                                            <div class="mb-3">
+                                                <label for="">Date de  debut</label>
+                                                <input type="date" class="form-control" value=" {{ $event->start }}"  name="start">
+                                                @error('start')
+                                                    <span class="small text-danger"> {{ $message }} </span>
+                                                @enderror
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="">Date de fin</label>
                                                 <input type="date" class="form-control" value=" {{ $event->end }}"  name="end">

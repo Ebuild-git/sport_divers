@@ -77,10 +77,27 @@
                                             <i class="flaticon-user-1"></i>
                                             <span class="author">admin</span>
                                         </div> --}}
-                                                {{--   <div class="meta meta-folder">
+                                                   <div class="meta meta-folder">
                                             <i class="flaticon-folder"></i>
-                                            <span class="author"><a href="#">Latest News</a></span>
-                                        </div> --}}
+                                            {{-- <span class="author"><a href="#">Date fin évènement: {{ $event->end ?? ' ' }}</a></span> --}}
+                                            {{-- <span class="author">
+                                                <a href="#" style="color: #2010f4;">Date fin évènement: {{ $event->end ? $event->end : 'En cours' }}</a>
+                                            </span> --}}
+                                            @php
+    $now = \Carbon\Carbon::now(); // Obtient la date et l'heure actuelles
+    $endDate = $event->end ? \Carbon\Carbon::parse($event->end) : null; // Convertit la date de fin en instance Carbon
+@endphp
+
+<span class="author">
+    @if ($endDate && $now->greaterThan($endDate))
+        <span style="color: red;">L'événement est terminé.</span>
+    @else
+        <a href="#" style="color: #ff0000;">Date fin évènement: {{ $event->end ?? 'Not available' }}</a>
+    @endif
+</span>
+
+                                            
+                                        </div> 
                                             </div>
                                         </div>
                                         <div class="blog-content">

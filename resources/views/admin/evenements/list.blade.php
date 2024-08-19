@@ -72,7 +72,8 @@
                                               <th>Image</th>
                                               <th>Titre</th>
                                              
-                                              <th>Créé le</th>
+                                              <th>Date debut </th>
+                                              <th>Date fin </th>
                                               <th scope="col" width="15%">Actions</th>
                                             
                                               
@@ -100,7 +101,8 @@
                                                  
                                                 
                                                 
-                                                  <td>{{ $event->created_at }} </td>
+                                                  <td>{{ $event->start }} </td>
+                                                  <td>{{ $event->end }} </td>
 
                                                   <td>
                                                     <div class="row">
