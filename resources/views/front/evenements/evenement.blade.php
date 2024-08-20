@@ -155,7 +155,14 @@
                                             <h3 class="blog-title">
                                                 <a href="#">{{ $event->titre ?? ' ' }}</a>
                                             </h3>
-                                            <div class="blog-desc">{{ $event->description ?? ' ' }}</div>
+                                            <!-- Dans la vue Blade (par exemple, resources/views/event/show.blade.php) -->
+                                            <style>
+                                                .blog-desc {
+                                                    text-align: justify;
+                                                }
+                                            </style>
+
+                                            <div class="blog-desc">{{-- {{ $event->description ?? ' ' }} --}} {!! $event->description !!}</div>
                                             {{--  <div class="read-button">
                                                 <a href="#">Continue Reading</a>
                                             </div> --}}

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class AdminContact extends Component
 {
     use WithFileUploads;
-    public $logo,$icon,$logo2,$icon2, $logoHeader, $telephone,$addresse, $email,$description,$fax,$logocontact,$logocontact2,$photos,$photos2,$titre_apropos,$des_apropos,
+    public $logo,$icon,$logo2,$icon2, $logoHeader, $logoHeader2, $telephone,$addresse, $email,$description,$fax,$logocontact,$logocontact2,$photos,$photos2,$titre_apropos,$des_apropos,
       $facebook, $twitter, $instagram, $youtube, $linkedin, $tiktok, $coach, $seance, $adherent, $tounoir; 
 
     public function mount(){
@@ -26,7 +26,7 @@ class AdminContact extends Component
        
         //$this->logocontact= $config->logocontact;
         $this->logocontact2= $config->logocontact;
-        $this->logoHeader= $config->logoHeader;
+        $this->logoHeader2= $config->logoHeader;
         $this->email=$config->email;
         $this->telephone=$config->telephone;
         $this->fax=$config->fax;

@@ -75,7 +75,7 @@
                     <div wire:ignore class="form-group row">
                        
                         <div class="col-md-12">
-                            <textarea wire:model="description" class="form-control"  id="message"></textarea>
+                            <textarea  id="description"   wire:model="description" class="form-control"  >Message</textarea>
                            
                         </div>
                     </div>
@@ -107,9 +107,9 @@
 <script src="https://cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
 
 <script>
-        const editor = CKEDITOR.replace('message');
+        const editor = CKEDITOR.replace('description');
         editor.on('change', function(event){
             console.log(event.editor.getData())
-            @this.set('message', event.editor.getData());
+            @this.set('description', event.editor.getData());
         })
 </script>

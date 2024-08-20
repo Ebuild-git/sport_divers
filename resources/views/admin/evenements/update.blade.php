@@ -2,6 +2,11 @@
 @extends('admin.fixe')
 
 
+<head>
+    <!-- Other head elements -->
+    <!-- CKEditor CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/ckeditor.js"></script>
+</head>
 
 
 @section('body')
@@ -76,14 +81,11 @@
                                            
                                             
                                            
-                            
-                                            <div class="mb-3">
-                                                <label for="description">Description</label>
-                                                <textarea rows="5" id="description" value={{ $event->description }} name="description" class="form-control">{{ old('description', $event->description) }}</textarea>
-                                                @error('description')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                            
+                                            
+
+                  
+
                             
                             
                             
@@ -105,6 +107,34 @@
                             
                                         </div>
                                     </div>
+
+                                    
+                                 {{--    <div class="col-sm-8">
+                                        <label for="description">Description</label>
+                                        <textarea rows="5" id="description" value= {!! $event->description !!} name="description" class="form-control">{!! old('description', $event->description) !!}</textarea>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>  --}}
+
+                                    <div class="mb-3">
+                                        <label for="description">Description</label>
+                                        <textarea rows="5" cols="50" id="description" name="description" class="form-control">
+                                            {!! old('description', $event->description) !!}
+                                        </textarea>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#description'))
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                  
                                 </form>
 
                              @include('components.confirmation')
@@ -127,5 +157,8 @@
         </div>
     </div>
 
+  
  
 @endsection
+
+

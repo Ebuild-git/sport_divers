@@ -83,7 +83,7 @@
                     <div class="row rs-vertical-middle">
                         <div class="col-lg-2">
                             <div class="logo-area"> <a class="menu-logo" href="{{ route('home') }}"><img
-                                        src="{{ Storage::url($config->logo) }}" alt="Logo" height="80"
+                                        src="{{ Storage::url($config->logoHeader) }}" alt="Logo" height="80"
                                         width="80" /></a>
                             </div>
                         </div>

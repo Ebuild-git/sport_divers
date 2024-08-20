@@ -53,7 +53,7 @@ public function create()
 {
     $data =  $this->validate([
         'titre' => 'required|string',
-        'description' => 'required|string|max:260',
+        'description' => 'required|string|max:500260',
        
        
          'image' => 'required|image|mimes:jpg,jpeg,png,webp',
