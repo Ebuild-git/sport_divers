@@ -436,10 +436,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                      {{--   <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
                                             <span class="align-middle"><i
                                                     class="ti ti-device-desktop-analytics ti-md me-3"></i>System</span>
-                                        </a>
+                                        </a> --}}
                                     </li>
                                 </ul>
                             </li>
