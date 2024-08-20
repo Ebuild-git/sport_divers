@@ -31,6 +31,11 @@
     text-align: center;
 }
 
+.banner-contact{
+    text-align: center;
+
+}
+
 
 
         </style>
@@ -55,9 +60,9 @@
                 <br><br>
                 <div class="text-part common">
                     {{-- <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
-                     <h1 class="title"><span class="primary-color">Sport</span> Divers</h1> 
+                    {{--  <h1 class="title"><span class="primary-color">Sport</span> Divers</h1>  --}}
                    {{--  <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div> --}}
-                    <div class="slider-btn">
+                    <div class="slider-btn banner-contact">
                         <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
                     </div>
                 </div>
@@ -138,7 +143,9 @@
                     <div class="col-lg-4 pr-0 col-padding-md md-mb-30">
                         <div class="rs-upcoming-match bg1 text-center">
                             <div class="title-style">
-                                <h4 class="margin-0 white-color">Evènement à venir</h4>
+                                <h4 class="margin-0 white-color">{{ $lastVideo->titre ?? '' }}</h4>
+                                <a class="readon" href="{{ route('evenements') }}">Voir plus </a>
+                                
                                 <span class="line-bg pt-18 y-w"></span>
                             </div>
 
@@ -146,8 +153,8 @@
                                 <div class="row rs-vertical-middle">
                                     <div class="col-md-4 col-sm-4 col-4">
                                         <div class="team-logo">
-                                            <img class="size-80" src="{{ Storage::url($lastVideo->image ?? ' ') }}"
-                                                alt="Valencia">
+                                           {{--  <img class="size-80" src="{{ Storage::url($lastVideo->image ?? ' ') }}"
+                                                alt="Valencia"> --}}
                                             <div class="name white-color">{{ $lastVideo->titre ?? '' }}</div>
                                         </div>
                                     </div>
@@ -311,46 +318,18 @@
                                         </script>
                                         
                                         
-{{-- 
-                                    @if($lastVideo->path)
-    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        @if(Str::contains($lastVideo->path, 'youtube.com/embed/'))
-            <!-- YouTube Video -->
-            <iframe src="{{ $lastVideo->path }}" 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                    frameborder="0" allowfullscreen>
-            </iframe>
-        @else
-            <!-- Local Video -->
-            <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                <source src="{{ Storage::url($lastVideo->path) }}" type="video/mp4">
-                Votre navigateur ne supporte pas la balise vidéo.
-            </video>
-        @endif
-    </div>
-@endif --}}
+
 
 
                               
                                 
  
 
-{{--  <div class="col-lg-8 pl-30 col-padding-md">
-    <div class="rs-video big-space bg2 bdru-4 text-center">
-        <div class="video-contents">
-            <a class="popup-videos play-btn" href="https://www.youtube.com/watch?v=t17O6JoU2Ew"><i class="fa fa-play"></i></a>
-                                    
-                                    
-            <h3 class="title white-color mt-18 mb-0">{{ $latestVideo->titre ?? '' }}</h3>
-        </div>
-    </div>
-</div> --}}
 
 
 
 
                                     
-                                   {{--  <h3 class="title white-color">{{ $latestVideo->titre ?? '' }}</h3> --}}
                                 </div>
                             </div>
 

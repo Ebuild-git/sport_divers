@@ -83,6 +83,7 @@
                                                     </div>
                                                     <button type="submit" class="btn btn-primary mt-2">Modifier photo</button>
                                                 </form>
+                                                @include('components.confirmation')
                                         </div>
                                         <div class="col-12 col-lg-5">
                                             <p style="text-align: right;">

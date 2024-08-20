@@ -62,7 +62,7 @@
 
 
 
-                    <div class="col-sm-12">
+                    {{-- <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="description">Description</label>
                             <textarea id="description" wire:model="description" class="form-control"></textarea>
@@ -70,8 +70,15 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
+                    <div wire:ignore class="form-group row">
+                       
+                        <div class="col-md-12">
+                            <textarea wire:model="description" class="form-control"  id="message"></textarea>
+                           
+                        </div>
+                    </div>
 
 
                     
@@ -86,6 +93,8 @@
                     Enregistrer
                 </button>
             </div>
+
+            
         </form>
 
 
@@ -94,3 +103,13 @@
 
 
 </div>
+
+<script src="https://cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
+
+<script>
+        const editor = CKEDITOR.replace('message');
+        editor.on('change', function(event){
+            console.log(event.editor.getData())
+            @this.set('message', event.editor.getData());
+        })
+</script>

@@ -92,16 +92,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                @if(session('success'))
-                                <script>
-                                    Swal.fire({
-                                        title: 'Succès!',
-                                        text: '{{ session('success') }}',
-                                        icon: 'success',
-                                        confirmButtonText: 'OK'
-                                    });
-                                </script>
-                                @endif
+                               @include('components.confirmation')
 
 
 
