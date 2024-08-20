@@ -63,7 +63,7 @@
                                         <div class="blog-img">
                                             <div class="image-wrap">
                                                 <a href="#"><img src="{{ Storage::url($event->image ?? ' ') }}"
-                                                        height="500" width="500" alt=""></a>
+                                                        height="1000" width="1000" alt=""></a>
                                             </div>
                                             <div class="all-meta">
 
