@@ -3,7 +3,9 @@
 
 @section('body')
 
-
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -80,13 +82,13 @@
                                           
                                          
                                             
-                                            <div class="mb-3">
+                                          {{--   <div class="mb-3">
                                                 <label for="description">Description</label>
                                                 <textarea rows="5" id="description" value={{ $video->description }} name="description" class="form-control">{{ old('description', $video->description) }}</textarea>
                                                 @error('description')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                             
                             
                             
@@ -109,7 +111,16 @@
                                         </div>
                                     </div>
                                 </form>
-
+                                @if(session('success'))
+                                <script>
+                                    Swal.fire({
+                                        title: 'Succès!',
+                                        text: '{{ session('success') }}',
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    });
+                                </script>
+                                @endif
 
 
                             </div>

@@ -78,7 +78,7 @@ public function incrementViewCount($id)
     {
           $this->validate($request, [
              'titre' => 'required|string|max:255',
-             'description' => 'required|string|max:255',
+             'description' => 'nullable|string|max:255',
              'video' => 'nullable|file|mimetypes:video/*',
              'path' => 'nullable|url',
              'image' => 'required|image|max:4048',
@@ -92,7 +92,7 @@ public function incrementViewCount($id)
   
              $video = new Video();
              $video->titre = $request->titre;
-             $video->description = $request->description;
+           //  $video->description = $request->description;
             $video->image = $request->image->store('images', 'public');
             // $video->video = $filePath;
            $video->path =$embedUrl;

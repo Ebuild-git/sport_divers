@@ -4,7 +4,9 @@
 @section('body')
 
 
-
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
     
 <div class="layout-wrapper layout-content-navbar">

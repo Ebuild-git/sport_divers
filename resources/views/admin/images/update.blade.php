@@ -4,6 +4,10 @@
 @section('body')
 
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
 
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -88,6 +92,16 @@
                                         </div>
                                     </div>
                                 </form>
+                                @if(session('success'))
+                                <script>
+                                    Swal.fire({
+                                        title: 'Succès!',
+                                        text: '{{ session('success') }}',
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    });
+                                </script>
+                                @endif
 
 
 

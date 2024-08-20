@@ -4,7 +4,9 @@
 @section('body')
 
 
-
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
 
     <div class="layout-wrapper layout-content-navbar">
@@ -210,6 +212,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 @livewire('Sponsors.EditSponsor', ['sponsor' => null])
+
+              
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
@@ -249,6 +253,17 @@
                         <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     </div>
                 </form>
+
+                @if(session('success'))
+                <script>
+                    Swal.fire({
+                        title: 'Succès!',
+                        text: '{{ session('success') }}',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+                @endif
             </div>
         </div>
     </div>

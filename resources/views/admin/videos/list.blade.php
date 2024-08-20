@@ -3,8 +3,9 @@
 
 @section('body')
 
-
-
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <div class="content-wrapper">
@@ -84,8 +85,8 @@
                                                         {{ $video->titre }}
                                                     </td>
                                                     <td>
-                                                         <img src="{{ Storage::url($video->image) }}" width="50" height="50"
-                                                             class="rounded shadow" alt="">
+                                                        <img src="{{ Storage::url($video->image) }}" width="50"
+                                                            height="50" class="rounded shadow" alt="">
                                                     </td>
 
                                                     <td>
@@ -95,11 +96,13 @@
                                                             la
                                                             vidéo</button> --}}
 
-                                                            @if($video->path)
-    <div class="video-container">
-        <iframe width="200" height="195" src="{{ $video->path }}" frameborder="0" allowfullscreen></iframe>
-    </div>
-@endif
+                                                        @if ($video->path)
+                                                            <div class="video-container">
+                                                                <iframe width="200" height="195"
+                                                                    src="{{ $video->path }}" frameborder="0"
+                                                                    allowfullscreen></iframe>
+                                                            </div>
+                                                        @endif
 
 
 
@@ -158,8 +161,6 @@
                                                 <tr>
                                                     <td colspan="9" class="text-center">Aucun video trouvé</td>
                                                 </tr>
-
-                                             
                                             @endforelse
 
                                         </tbody>
@@ -191,19 +192,19 @@
 
         </div>
     </div>
- 
+
 
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="myCenterModalLabel">
-                        Ajouter une video à la  gallerie.
+                        Ajouter une video à la gallerie.
                     </h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 {{--  @livewire('Sponsors.AddSponsor',['sponsor'=> null]  ) --}}
-                <form action="{{ route('store.video') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store.video') }}" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <div class="modal-body">
                         @include('components.alert')
@@ -219,16 +220,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">Description *</label>
-                                    <textarea id="description" name="description" class="form-control"></textarea>
-                                    @error('description')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                         
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="path" class="form-label"> Ajouter le lien de la Vidéo *</label>
@@ -250,16 +242,7 @@
                                 <br>
                             </div>
 
-                            <script>
-                                document.getElementById('video').addEventListener('change', function() {
-    var file = this.files[0];
-    if (file.size > 100 * 1024 * 1024) { // 100MB
-        alert('Le fichier est trop volumineux.');
-        this.value = '';
-    }
-});
-
-                            </script>
+                         
 
 
 
@@ -270,6 +253,18 @@
 
 
                 </form>
+                @if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Succès!',
+        text: '{{ session('success') }}',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+             
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>

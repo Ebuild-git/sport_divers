@@ -1,6 +1,10 @@
 @section('titre', $event->titre)
 @extends('admin.fixe')
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
 
 @section('body')
     <div class="layout-wrapper layout-content-navbar">
@@ -105,7 +109,16 @@
                                     </div>
                                 </form>
 
-
+                                @if(session('success'))
+                                <script>
+                                    Swal.fire({
+                                        title: 'Succès!',
+                                        text: '{{ session('success') }}',
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    });
+                                </script>
+                                @endif
 
                             </div>
                         </div>

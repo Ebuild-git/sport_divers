@@ -3,7 +3,9 @@
 
 @section('body')
 
-
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
 
 
@@ -195,10 +197,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                  @livewire('Images.AddImage', ['img'=>null])
+
+                 @if(session('success'))
+                 <script>
+                     Swal.fire({
+                         title: 'Succès!',
+                         text: '{{ session('success') }}',
+                         icon: 'success',
+                         confirmButtonText: 'OK'
+                     });
+                 </script>
+                 @endif
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
-
 
     <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -249,6 +261,19 @@
                         <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     </div>
                 </form>
+
+                @if(session('success'))
+                <script>
+                    Swal.fire({
+                        title: 'Succès!',
+                        text: '{{ session('success') }}',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+                @endif
+                
+
             </div>
         </div>
     </div>
