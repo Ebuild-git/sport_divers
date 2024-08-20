@@ -57,8 +57,23 @@ public function avatar(Request $request)
         'avatar' => 'required|image|max:2048',
     ]);
     $user = Auth::user();
+    $request->validate([
+        'avatar' => 'required|image|max:2048',
+    ]);
 
-   
+    $user = Auth::user();
+
+    if ($request->hasFile('avatar')) {
+        if ($user->avatar) {
+            Storage::disk('public')->delete('avatars/' . $user->avatar);
+        }
+
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $user->avatar = $path;
+        $user->save();
+    }
+
+/*    
       if ($user->avatar) {
         $oldAvatarPath = public_path('public/avatars/') . '/' . $user->avatar;
         if (File::exists($oldAvatarPath)) {
@@ -71,7 +86,7 @@ public function avatar(Request $request)
     $request->avatar->move(public_path('public/avatars/'), $avatarName);
 
     Auth()->user()->update(['avatar' => $avatarName]); 
-   
+    */
 
     return back()->with('success', 'Avatar updated successfully.');
 }

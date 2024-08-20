@@ -551,8 +551,10 @@
                                         {{--  <img src="../../assets/img/avatars/1.png" alt class="rounded-circle" /> --}}
                                      {{--    <img src="{{ asset('assets/avatars/' . Auth::user()->avatar) }}" alt
                                             class="rounded-circle"> --}}
-                                            <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"
-                                            alt class="rounded-circle">
+                                         {{--    <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"
+                                            alt class="rounded-circle"> --}}
+
+                                            <img src="{{ Storage::url(Auth::user()->avatar) }}"  alt class="rounded-circle" style="width: 50px; height: 50px;">
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -565,7 +567,8 @@
                                                             class="rounded-circle" /> --}}
                                                      {{--    <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"
                                                             alt class="rounded-circle"> --}}
-  <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="Avatar" style="width: 150px; height: 150px;">
+  <img src="{{ Storage::url(Auth::user()->avatar) }}"  alt class="rounded-circle" style="width: 50px; height: 50px;">
+
 
 
                                                     </div>

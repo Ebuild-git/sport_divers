@@ -55,8 +55,10 @@
                                                 <div class="mb-md-0 mb-3">
                                                     {{-- <img src="{{ Auth::user()->avatar() }}" class="rounded-circle shadow" width="130"
                                                         height="130" alt="" /> --}}
-                                                        <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"  class="rounded-circle shadow" width="130"
-                                                        height="130" alt="" /> 
+                                                      {{--   <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"  class="rounded-circle shadow" width="130"
+                                                        height="130" alt="" />  --}}
+                                                        <img src="{{ Storage::url(Auth::user()->avatar) }}"  class="rounded-circle shadow" width="130"
+                                                        height="130">
                                                 </div>
                                                 <div class="ms-md-4 flex-grow-1">
                                                     <div class="d-flex align-items-center mb-1">
