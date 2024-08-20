@@ -31,10 +31,7 @@
     text-align: center;
 }
 
-.banner-contact{
-    text-align: center;
 
-}
 
 
 
@@ -62,7 +59,7 @@
                     {{-- <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
                     {{--  <h1 class="title"><span class="primary-color">Sport</span> Divers</h1>  --}}
                    {{--  <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div> --}}
-                    <div class="slider-btn banner-contact">
+                    <div class="slider-btn contact title">
                         <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
                     </div>
                 </div>
