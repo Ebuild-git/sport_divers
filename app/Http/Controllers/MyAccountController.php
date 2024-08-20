@@ -58,16 +58,8 @@ public function avatar(Request $request)
     ]);
     $user = Auth::user();
 
-    /* 
-    if ($request->hasFile('avatar')) {
-        if ($user->avatar) {
-            Storage::delete($user->avatar);
-        }
-
-        $path = $request->file('avatar')->store('avatars', 'public');
-        $user->avatar = $path;
-    } */
-     if ($user->avatar) {
+   
+      if ($user->avatar) {
         $oldAvatarPath = public_path('public/avatars/') . '/' . $user->avatar;
         if (File::exists($oldAvatarPath)) {
             File::delete($oldAvatarPath);
@@ -79,6 +71,7 @@ public function avatar(Request $request)
     $request->avatar->move(public_path('public/avatars/'), $avatarName);
 
     Auth()->user()->update(['avatar' => $avatarName]); 
+   
 
     return back()->with('success', 'Avatar updated successfully.');
 }

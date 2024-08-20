@@ -563,8 +563,10 @@
                                                     <div class="avatar avatar-online">
                                                         {{--  <img src="../../assets/img/avatars/1.png" alt
                                                             class="rounded-circle" /> --}}
-                                                        <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"
-                                                            alt class="rounded-circle">
+                                                     {{--    <img src="{{ asset('public/avatars/' . Auth::user()->avatar) }}"
+                                                            alt class="rounded-circle"> --}}
+  <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="Avatar" style="width: 150px; height: 150px;">
+
 
                                                     </div>
                                                 </div>
