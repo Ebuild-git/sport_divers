@@ -63,6 +63,10 @@
                         <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
                     </div>
                 </div>
+
+                <div class="slider-btn contact text-center">
+                    <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
+                </div>
             </div>
         </div>
         @endforeach
