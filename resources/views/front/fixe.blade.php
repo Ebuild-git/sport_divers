@@ -14,6 +14,7 @@
         <title> @yield('titre') - Sport Divers</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="">
+        <link rel="icon" href="{{ Storage::url($config->icon) }}" type="image/png" />
         <!-- responsive tag -->
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
