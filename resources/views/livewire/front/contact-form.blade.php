@@ -51,7 +51,7 @@
 
             <div class="col-lg-6">
                 <div class="from-control">
-                    <input wire:model="age" type="number" placeholder="Age" id="age" required="required">
+                    <input wire:model="age" type="number" placeholder="Age" id="age" required="required" >
                     @error('age')
                         <span class="small text-danger">
                             {{ $message }}
@@ -62,7 +62,7 @@
 
             <div class="col-lg-6">
                 <div class="form-control col-lg-12">
-                    <select wire:model="gender" id="sexe" class="input-field">
+                    <select wire:model="gender" id="sexe" class="input-field w-100" >
                         <option value="">Sélectionnez votre sexe</option>
                         <option value="MALE">Homme</option>
                         <option value="FEMALE">Femme</option>
@@ -79,7 +79,7 @@
           
             <div class="col-lg-6">
                 <div class="form-control col-lg-12 p-1">
-                    <input wire:model="cni"  type="number" placeholder="CIN" id="cni" class="input-field" required minlength="8" maxlength="8" pattern="[01]{2}[0-9]{6}" title="CIN doit avoir 8 chiffres et les deux premier sont composés entre 0 et 1">
+                    <input wire:model="cni"  type="number" placeholder="CIN" id="cni" class="input-field w-100" required minlength="8" maxlength="8" pattern="[01]{2}[0-9]{6}" title="CIN doit avoir 8 chiffres et les deux premier sont composés entre 0 et 1">
                     @error('cni')
                         <span class="small text-danger error-message">
                             {{ $message }}
