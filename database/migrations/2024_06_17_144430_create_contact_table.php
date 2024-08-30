@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email');
             $table->text('message');
             $table->string('ville')->nullable();
+            $table->integer("cni")->nullable();
             $table->timestamps();
         });
     }

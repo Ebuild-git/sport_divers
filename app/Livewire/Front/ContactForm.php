@@ -17,6 +17,7 @@ class ContactForm extends Component
     public $age = '';
    // public $errors = [];
     public $gender = 'MALE';
+    public $cni = '';
 
 
 
@@ -31,12 +32,21 @@ class ContactForm extends Component
             'telephone' => 'required|numeric',
             'age' => 'required|max:200',
             'gender' => 'nullable',
+            'gender' => ['required', 'in:MALE,FEMALE'],
+         //   'cin' => 'nullable|numeric|max:200',
+            //'cin' => ['required', 'regex:/^[01]{2}[0-9]{6}$/'],
+            'cni' => ['required', 'regex:/^[01]{2}[0-9]{6}$/'],
           
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'nom.required' => 'Veuillez entrer votre nom',
             'sujet.required' => 'Veuillez entrer votre sujet',
             'message.required' => 'Veuillez entrer votre message',
+            'telephone.required' => 'Veuillez entrer votre téléphone',
+            'age.required' => 'Veuillez entrer votre ��ge',
+            'gender.nullable' => 'Veuillez selectionner votre genre',
+            'cni.nullable' => 'Veuillez entrer votre CIN',
+           // 'cin.numeric' => 'Veuillez entrer un numéro valide pour votre CIN',
          
           
         ]);
@@ -49,6 +59,7 @@ class ContactForm extends Component
         $contact->telephone = $this->telephone;
         $contact->age = $this->age;
         $contact->gender = $this->gender;
+        $contact->cni = $this->cni;
    
 
         if ($contact->save()) {
@@ -63,7 +74,8 @@ class ContactForm extends Component
                     'lastName' => $this->sujet, 
                     'phone' => $this->telephone, 
                     'observation' => $this->message, 
-                    'gender' =>  'MALE',
+                    'gender' =>  $this->gender,
+                    'cni' => $this->cni,
                 ];
         
                 try {
@@ -86,7 +98,8 @@ class ContactForm extends Component
                             'message',
                             'telephone',
                             'age',
-                         //   'gender',
+                           'gender',
+                           'cni',
 
                         ]);
                         session()->flash('success', 'Votre message a été envoyé avec succès à l\'API externe');
