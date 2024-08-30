@@ -75,8 +75,28 @@
                 </div>
             </div>
             <br><br>
+            <div class="col-lg-6">
+                <div class="form-control col-lg-12 p-1">
+                    <input 
+                        wire:model="cni"  
+                        type="text" 
+                        placeholder="CIN" 
+                        id="cni" 
+                        class="input-field w-100" 
+                        required 
+                        maxlength="8" 
+                        pattern="[01]{2}[0-9]{6}" 
+                        title="CIN doit avoir 8 chiffres et les deux premiers sont composés entre 0 et 1"
+                        oninput="this.value = this.value.slice(0, 8);">
+                    @error('cni')
+                        <span class="small text-danger error-message">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+            </div>
             
-          
+          {{-- 
             <div class="col-lg-6">
                 <div class="form-control col-lg-12 p-1">
                     <input wire:model="cni"  type="number" placeholder="CIN" id="cni" class="input-field w-100" required minlength="8" maxlength="8" pattern="[01]{2}[0-9]{6}" title="CIN doit avoir 8 chiffres et les deux premier sont composés entre 0 et 1">
@@ -86,7 +106,7 @@
                         </span>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
            
 
