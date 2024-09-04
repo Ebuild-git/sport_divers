@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('telephone')->nullable();
             $table->string('sujet')->nullable();
             $table->integer("age")->nullable();
+            $table->date("naissance")->nullable();
             $table->enum("gender",["FEMALE","MALE"])->default("MALE");
             $table->string('email');
             $table->text('message');

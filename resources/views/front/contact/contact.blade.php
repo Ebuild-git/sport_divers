@@ -9,27 +9,7 @@
         @endphp
 
 
-        <!-- Breadcrumbs Section Start -->
-     
-<!-- Breadcrumbs Start -->
- {{-- <div class="rs-breadcrumbs" style="margin-top: -30; padding-top: 0px;">
-    <div class="breadcrumbs-wrap" style="padding-top: 10px;">
-        <img src="/assets/contact/1.png" width="100" height="100" alt="Breadcrumbs Image">
-        <div class="breadcrumbs-inner">
-            <div class="container">
-                <div class="breadcrumbs-text">
-                    <h1 class="breadcrumbs-title mb-17">Contact</h1>
-                    <div class="categories">
-                        <ul>
-                            <li><a href="{{ route('home') }}">Accueil</a></li>
-                            <li class="active">Contact</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  --}}
+
 
 <style>
     .rs-breadcrumbs .breadcrumbs-wrap {

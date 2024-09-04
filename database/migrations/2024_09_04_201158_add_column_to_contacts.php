@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             //
-            $table->integer("cni")->nullable();
+            $table->date("naissance")->nullable();
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             //
-            $table->dropColumn("cni");
+            $table->dropColumn("naissance");
         });
     }
 };
