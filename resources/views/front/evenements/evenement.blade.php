@@ -162,10 +162,8 @@
                                                 }
                                             </style>
 
-                                            <div class="blog-desc">{{-- {{ $event->description ?? ' ' }} --}} {!! $event->description !!}</div>
-                                            {{--  <div class="read-button">
-                                                <a href="#">Continue Reading</a>
-                                            </div> --}}
+                                            <div class="blog-desc"> {!! $event->description !!}</div>
+                                          
                                         </div>
                                     </div>
                                 @endif
