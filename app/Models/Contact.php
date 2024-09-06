@@ -18,12 +18,7 @@ class Contact extends Model
     protected $fillable = ['cin','nom','sujet','telephone', 'birthdate','email', 'message', 'user_id','age', 'gender', 'naissance'];
 
 
-    
-    /**   
-     * Get user of the Contact
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+  
     public function user()
     {
         return $this->belongsTo(User::class);
