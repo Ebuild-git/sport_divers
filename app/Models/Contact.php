@@ -15,9 +15,9 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['cni','nom','sujet','telephone', 'email', 'message', 'user_id','age', 'gender', 'naissance'];
+    protected $fillable = ['cin','nom','sujet','telephone', 'birthdate','email', 'message', 'user_id','age', 'gender', 'naissance'];
 
-    /**
+    /**   
      * Get user of the Contact
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
