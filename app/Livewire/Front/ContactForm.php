@@ -17,8 +17,8 @@ class ContactForm extends Component
   //  public $age = '';
    // public $errors = [];
     public $gender = 'MALE';
-    public $cni = '';
-    public $naissance = '';
+    public $cin = '';
+    public $birthdate = '';
 
 
 
@@ -35,7 +35,7 @@ class ContactForm extends Component
             'gender' => 'nullable',
             'gender' => ['required', 'in:MALE,FEMALE'],
       
-           'naissance' => ['required', 'date', 'before:'. date('Y-m-d')],
+           'birthdate' => ['required', 'date', 'before:'. date('Y-m-d')],
            
         ], [
             'email.required' => 'Veuillez entrer votre email',
@@ -45,7 +45,7 @@ class ContactForm extends Component
             'telephone.required' => 'Veuillez entrer votre téléphone',
         
             'gender.nullable' => 'Veuillez selectionner votre genre',
-            'cni.nullable' => 'Veuillez entrer votre CIN',
+            //'cin.nullable' => 'Veuillez entrer votre CIN',
           
          
           
@@ -59,8 +59,8 @@ class ContactForm extends Component
         $contact->telephone = $this->telephone;
        
         $contact->gender = $this->gender;
-        $contact->cni = $this->cni;
-        $contact->naissance = $this->naissance;
+        $contact->cin = $this->cin;
+        $contact->birthdate = $this->birthdate;
    
 
         if ($contact->save()) {
@@ -76,8 +76,8 @@ class ContactForm extends Component
                     'phone' => $this->telephone, 
                     'observation' => $this->message, 
                     'gender' =>  $this->gender,
-                    'cni' => $this->cni,
-                    'naissance' => $this->naissance,
+                    'cin' => $this->cin,
+                    'birthdate' => $this->birthdate,
                     
                 ];
         
@@ -102,11 +102,11 @@ class ContactForm extends Component
                             'telephone',
                             
                            'gender',
-                           'cni',
-                            'naissance',
+                           'cin',
+                            'birthdate',
 
                         ]);
-                        session()->flash('success', 'Votre message a été envoyé avec succès à l\'API externe');
+                        session()->flash('success', 'Votre message a été envoyé avec succès ');
                     } else {
                         session()->flash('error', 'Le message a été sauvegardé, mais une erreur est survenue lors de l\'envoi à l\'API');
                     }

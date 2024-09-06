@@ -18,12 +18,13 @@ return new class extends Migration
             $table->string('telephone')->nullable();
             $table->string('sujet')->nullable();
             $table->integer("age")->nullable();
-            $table->date("naissance")->nullable();
+            $table->date("birthdate")->nullable();
             $table->enum("gender",["FEMALE","MALE"])->default("MALE");
             $table->string('email');
             $table->text('message');
             $table->string('ville')->nullable();
-            $table->integer("cni")->nullable();
+            $table->integer("cin")->nullable();
+
             $table->timestamps();
         });
     }

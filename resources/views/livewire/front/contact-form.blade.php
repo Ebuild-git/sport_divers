@@ -51,8 +51,8 @@
 
             <div class="col-lg-6">
                 <div class="from-control">
-                    <input wire:model="naissance" type="date" placeholder="Age" id="naissance" required="required" >
-                    @error('naissance')
+                    <input wire:model="birthdate" type="date" placeholder="Age" id="birthdate" required="required" >
+                    @error('birthdate')
                         <span class="small text-danger">
                             {{ $message }}
                         </span>
@@ -78,17 +78,17 @@
             <div class="col-lg-6">
                 <div class="form-control col-lg-12 p-1">
                     <input 
-                        wire:model="cni"  
+                        wire:model="cin"  
                         type="text" 
                         placeholder="CIN" 
-                        id="cni" 
+                        id="cin" 
                         class="input-field w-100" 
                         required 
                         maxlength="8" 
                         pattern="[01][0-9]{7}" 
                         title="CIN doit avoir 8 chiffres, et le premier chiffre doit être 0 ou 1"
                         oninput="this.value = this.value.slice(0, 8);">
-                    @error('cni')
+                    @error('cin')
                         <span class="small text-danger error-message">
                             {{ $message }}
                         </span>
