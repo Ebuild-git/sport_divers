@@ -143,7 +143,7 @@
                                             <!-- End Home -->
 
                                             <!--Contact Menu Start-->
-                                            <li><a href="{{ route('evenements') }}">Evènements</a></li>
+                                     {{--        <li><a href="{{ route('evenements') }}">Evènements</a></li> --}}
                                             {{--   <li class="last-item"><a href="{{ route('about') }}">A propos</a></li> --}}
                                             <li class="last-item"><a href="{{ route('contact') }}">Contact</a></li>
 
@@ -183,9 +183,9 @@
                 </div>
                 <div class="sidebarnav_menu">
                     <ul>
-                        <li class="active"><a href="{{ route('home') }}">Accueil</a></li>
+                       {{--  <li class="active"><a href="{{ route('home') }}">Accueil</a></li> --}}
 
-                        <li><a href="{{ route('evenements') }}">Evènements</a></li>
+                       {{--  <li><a href="{{ route('evenements') }}">Evènements</a></li> --}}
                         <li><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>
                 </div>
