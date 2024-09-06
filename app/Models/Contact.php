@@ -17,6 +17,8 @@ class Contact extends Model
      */
     protected $fillable = ['cin','nom','sujet','telephone', 'birthdate','email', 'message', 'user_id','age', 'gender', 'naissance'];
 
+
+    
     /**   
      * Get user of the Contact
      *
