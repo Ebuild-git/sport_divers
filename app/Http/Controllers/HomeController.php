@@ -28,7 +28,7 @@ class HomeController extends Controller
             $produits->where('nom', 'like', '%'.$key.'%')
             ->Orwhere('description', 'like', '%'.$key.'%');
         }
-       $produits = produits::select('*')->latest()->take(20)->get();
+     //  $produits = produits::select('*')->latest()->take(20)->get();
 
        $videos = Video::select('*')->latest()->take(20)->get();
        $events = Event::select('*')->latest()->take(20)->get();
@@ -46,7 +46,7 @@ class HomeController extends Controller
        $banners = Banners::select("titre","sous_titre","image")->get();
 
        $services = Service::all();
-      return view('front.index', compact('coachs','latestVideos','lastVideo','produits','configs','banners','services','key','videos','images','sponsors','events'));
+      return view('front.index', compact('coachs','latestVideos','lastVideo','configs','banners','services','key','videos','images','sponsors','events'));
 
     }
      
