@@ -24,10 +24,10 @@ class HomeController extends Controller
     public function home(Request $request)
     {
         $key = $request->input("key", null);
-        if(!is_null($key)){
+        /* if(!is_null($key)){
             $produits->where('nom', 'like', '%'.$key.'%')
             ->Orwhere('description', 'like', '%'.$key.'%');
-        }
+        } */
      //  $produits = produits::select('*')->latest()->take(20)->get();
 
        $videos = Video::select('*')->latest()->take(20)->get();
