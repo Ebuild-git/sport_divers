@@ -62,7 +62,7 @@
 
             <div class="col-lg-6">
                 <div class="form-control col-lg-12">
-                    <select wire:model="gender" id="sexe" class="input-field w-100" >
+                    <select wire:model="gender" id="sexe" class="  input-field w-100" >
                         <option value="">Sélectionnez votre sexe</option>
                         <option value="MALE">Homme</option>
                         <option value="FEMALE">Femme</option>
@@ -112,9 +112,9 @@
 
            
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="from-control">
-                    <input wire:model="sujet" type="text" placeholder="Sujet" id="subject" required="required">
+                    <input wire:model="sujet" type="text" placeholder="Sujet" id="subject"  required="required">
                     @error('sujet')
                         <span class="small text-danger">
                             {{ $message }}
