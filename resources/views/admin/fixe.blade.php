@@ -1,5 +1,5 @@
 @php
-    $config = DB::table('configs')->select('icon', 'logo', 'tounoir')->first();
+    $config = DB::table('configs')->select('*')->first();
 @endphp
 <!doctype html>
 

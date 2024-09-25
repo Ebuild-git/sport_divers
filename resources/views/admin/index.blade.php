@@ -2,7 +2,7 @@
 @section('titre', 'Accueil')
 @section('body')
 @php
-    $config = DB::table('configs')->select('icon', 'logo','tounoir', 'seance')->first();
+    $config = DB::table('configs')->select('*')->first();
 
 @endphp
 
