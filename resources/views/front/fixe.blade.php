@@ -83,7 +83,7 @@
                     <div class="row rs-vertical-middle">
                         <div class="col-lg-2">
                             <div class="logo-area"> <a class="menu-logo" href="{{ route('home') }}"><img
-                                        src="{{ Storage::url($config->logoHeader) }}" alt="Logo" height="80"
+                                        src="{{ Storage::url($config->logoHeader ?? ' ') }}" alt="Logo" height="80"
                                         width="80" /></a>
                             </div>
                         </div>
@@ -136,16 +136,17 @@
                                         </div>
                                         <ul class="nav-menu text-right">
                                             <!-- Home -->
-                                            <li class="current-menu-item current_page_item menu-item-has-children"> <a
+{{--                                             <li class="current-menu-item current_page_item menu-item-has-children"> <a
                                                     href="{{ route('home') }}" class="home">Accueil</a>
 
-                                            </li>
+                                            </li> --}}
                                             <!-- End Home -->
 
                                             <!--Contact Menu Start-->
                                      {{--        <li><a href="{{ route('evenements') }}">Evènements</a></li> --}}
                                             {{--   <li class="last-item"><a href="{{ route('about') }}">A propos</a></li> --}}
                                             <li class="last-item"><a href="{{ route('contact') }}">Contact</a></li>
+                                            <li class="last-item"><a href="{{ route('inscription') }}">Inscription</a></li>
 
                                             <!--Contact Menu End-->
 
@@ -179,7 +180,7 @@
                 <div class="close-btn"><span id="nav-close" class="text-center"><i
                             class="flaticon-cross"></i></span></div>
                 <div class="canvas-logo">
-                    <a href="{{ route('home') }}"><img src="{{ Storage::url($config->logo) }}" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{ Storage::url($config->logo ?? ' ') }}" alt="logo"></a>
                 </div>
                 <div class="sidebarnav_menu">
                     <ul>
@@ -242,7 +243,7 @@
                             }
                         </style>
                         <a href="{{ route('home') }}" class="app-brand-link mb-3">
-                            <img src="{{ Storage::url($config->logo) }}" alt="Logo" height="100"
+                            <img src="{{ Storage::url($config->logo ?? ' ') }}" alt="Logo" height="100"
                                 width="100" />
 
                         </a>
@@ -262,7 +263,7 @@
                             <li class="mb-2"><a href="{{ route('home') }}" target="_blank"
                                     class="footer-link">Accueil</a></li>
                             <li class="mb-2"><a href="{{ route('evenements') }}" target="_blank"
-                                    class="footer-link">>Evènements</a></li>
+                                    class="footer-link">Evènements</a></li>
                             <li class="mb-2"><a href="{{ route('contact') }}" target="_blank"
                                     class="footer-link">Contact</a></li>
                         </ul>

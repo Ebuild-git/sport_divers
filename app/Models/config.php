@@ -36,6 +36,7 @@ class config extends Model
         'photos',
         'image_apropos',
         'titre_apropos',
+       
         
     ];
 }

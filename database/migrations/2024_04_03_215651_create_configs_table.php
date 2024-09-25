@@ -14,12 +14,14 @@ return new class extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable()->default(null);
             $table->string('logoHeader')->nullable()->default(null);
             $table->string('telephone')->nullable()->default(null);
             $table->string('addresse')->nullable()->default(null);
             $table->string('email')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
+
+            $table->text('group')->nullable()->default(null);
+            $table->unsignedBigInteger('group_id')->nullable();
            
 
             $table->string('icon')->nullable()->default(null);

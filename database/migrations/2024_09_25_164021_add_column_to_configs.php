@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->integer("cin")->nullable();
-            $table->date("birthdate")->nullable();
+            //
+         //   $table->text('group')->nullable()->default(null);
+            $table->text('designation')->nullable()->default(null);
+           // $table->unsignedBigInteger('group_id')->nullable();
+
         });
     }
 
@@ -23,8 +26,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->dropColumn("cin");
-            $table->dropColumn("birthdate");
+            //
+            //$table->dropColumn('group');
+            $table->dropColumn('designation');
+           // $table->dropColumn('group_id');
         });
     }
 };
