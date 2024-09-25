@@ -25,6 +25,7 @@ return new class extends Migration
            
 
             $table->string('icon')->nullable()->default(null);
+            $table->string('logo')->nullable()->default(null);
 
             $table->integer("adherent")->nullable();
             $table->integer("coach")->nullable();
