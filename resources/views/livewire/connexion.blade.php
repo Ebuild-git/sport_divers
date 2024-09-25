@@ -14,7 +14,7 @@
             <div class="app-brand justify-content-center mb-6">
               <a href="#" class="app-brand-link">
                 <img
-                                src="{{ Storage::url($config->logo) }}" alt="Logo" height="80" width="80" />
+                                src="{{ Storage::url($config->logo ?? ' ') }}" alt="Logo" height="80" width="80" />
              
                 <span class="app-brand-text demo text-heading fw-bold">Sport Divers</span>
               </a>
