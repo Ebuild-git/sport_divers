@@ -68,7 +68,7 @@ class Inscription extends Component
         $contact->gender = $this->gender;
         $contact->cin = $this->cin;
         $contact->birthdate = $this->birthdate;
-       // $contact->group = $this->group;
+        $contact->group = $this->group;
         $contact->designation = $this->designation;
    
 
@@ -87,8 +87,8 @@ class Inscription extends Component
                     'gender' =>  $this->gender,
                     'cin' => $this->cin,
                     'birthdate' => $this->birthdate,
-                  //  'group' => $this->group,
-                    'designation' => $this->designation
+                    'group' => $this->group,
+                  //  'designation' => $this->designation
                     
                 ];
         

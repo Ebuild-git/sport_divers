@@ -100,7 +100,7 @@
                     <div class="from-control">
                         <div class="form-group">
                             <label for="group">Group</label>
-                            <select  wire:model="designation" class="form-control">
+                            <select  wire:model="group" class="form-control">
                                 @foreach($groups as $group)
                                     <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
                                 @endforeach
