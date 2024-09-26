@@ -18,7 +18,7 @@
     
                 <div class="col-lg-6">
                     <div class="from-control">
-                        <input wire:model="firstName" type="text" placeholder="Votre nom" id="firstName" required="required">
+                        <input wire:model="firstName" type="text" placeholder="Votre nom*" id="firstName" required="required">
                         @error('firstName')
                             <span class="small text-danger">
                                 {{ $message }}
@@ -29,7 +29,7 @@
 
                 <div class="col-lg-6">
                     <div class="from-control">
-                        <input wire:model="lastName" type="text" placeholder="Votre prénom" id="lastName" required="required">
+                        <input wire:model="lastName" type="text" placeholder="Votre prénom*" id="lastName" required="required">
                         @error('lastName')
                             <span class="small text-danger">
                                 {{ $message }}
@@ -42,7 +42,7 @@
     
                 <div class="col-lg-6">
                     <div class="from-control">
-                        <input wire:model="email" type="email" placeholder="E-Mail" id="email" required="required">
+                        <input wire:model="email" type="email" placeholder="E-Mail*" id="email" required="required">
                         @error('email')
                             <span class="small text-danger">
                                 {{ $message }}
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="from-control">
-                        <input wire:model="telephone" type="number" placeholder="Votre téléphone" id="telephone"
+                        <input wire:model="telephone" type="number" placeholder="Votre téléphone*" id="telephone"
                             required="required">
                         @error('telephone')
                             <span class="small text-danger">
