@@ -125,8 +125,9 @@
                  <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
-                            <label for="group">Group</label>
-                            <select  wire:model="group" class="form-control">
+                            <label for="group">Groupe</label>
+                            <select  wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
                                 @foreach($groups as $group)
                                     <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
                                 @endforeach
