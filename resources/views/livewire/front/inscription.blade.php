@@ -18,8 +18,19 @@
     
                 <div class="col-lg-6">
                     <div class="from-control">
-                        <input wire:model="nom" type="text" placeholder="Votre nom" id="name" required="required">
-                        @error('nom')
+                        <input wire:model="firstName" type="text" placeholder="Votre nom" id="firstName" required="required">
+                        @error('firstName')
+                            <span class="small text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="from-control">
+                        <input wire:model="lastName" type="text" placeholder="Votre prénom" id="lastName" required="required">
+                        @error('lastName')
                             <span class="small text-danger">
                                 {{ $message }}
                             </span>

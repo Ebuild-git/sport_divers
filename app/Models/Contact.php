@@ -16,7 +16,8 @@ class Contact extends Model
      * @var array
      */
     protected $fillable = ['cin','nom','sujet','telephone', 'birthdate','email', 'message', 'user_id','age',
-    'group', 'designation', 
+    'group', 'designation', 'firstName',
+    'lastName',
     'group_id', 'gender', 'naissance'];
 
 

@@ -15,6 +15,8 @@ class Inscription extends Component
 
     
     public $nom = '';
+    public $lastName = '';
+    public $firstName = '';
     public $telephone = '';
     public $email = '';
    public $sujet ='';
@@ -33,7 +35,7 @@ class Inscription extends Component
     {
         $this->validate([
             'email' => 'required|email',
-            'nom' => 'required|max:200|string',
+          //  'nom' => 'required|max:200|string',
           //  'sujet' => 'required|max:200|string',
           //  'message' => 'required|max:5000|string',
             'telephone' => 'required|numeric',
@@ -45,7 +47,7 @@ class Inscription extends Component
            
         ], [
             'email.required' => 'Veuillez entrer votre email',
-            'nom.required' => 'Veuillez entrer votre nom',
+          //  'nom.required' => 'Veuillez entrer votre nom',
             'sujet.required' => 'Veuillez entrer votre sujet',
             'message.required' => 'Veuillez entrer votre message',
             'telephone.required' => 'Veuillez entrer votre téléphone',
@@ -59,7 +61,9 @@ class Inscription extends Component
 
         $contact = new Contact();
         $contact->email = $this->email;
-        $contact->nom = $this->nom;
+       // $contact->nom = $this->nom;
+        $contact ->firstName = $this->firstName;
+        $contact->lastName = $this->lastName;
 
       //  $contact->sujet = $this->sujet;
        // $contact->message = $this->message;
@@ -80,14 +84,17 @@ class Inscription extends Component
                 // Préparation des données pour l'API externe
                 $data = [
                     'email' => $this->email,
-                    'firstName' => $this->nom, 
-                    'lastName' => $this->sujet, 
+                   /// 'firstName' => $this->nom, 
+                   // 'lastName' => $this->sujet, 
                     'phone' => $this->telephone, 
                     'observation' => $this->message, 
                     'gender' =>  $this->gender,
                     'cin' => $this->cin,
                     'birthdate' => $this->birthdate,
                     'group' => $this->group,
+                    'lastName'=>$this->lastName,
+                    'firstName'=>$this->firstName,
+                   // 'birthdate'=>$this->birthdate,
                   //  'designation' => $this->designation
                     
                 ];
@@ -107,10 +114,13 @@ class Inscription extends Component
                     if ($response->getStatusCode() == 201) {
                         $this->reset([
                             'email',
-                            'nom',
+                     //       'nom',
                             'sujet',
                            'message',
                             'telephone',
+                            'lastName',
+                            'firstName',
+                          
                             
                            'gender',
                            'cin',
