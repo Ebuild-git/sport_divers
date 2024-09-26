@@ -53,20 +53,18 @@
     
                 <div class="col-lg-6">
                     <style>
-
-<style>
-  /* Cacher par défaut */
-  .mobile-only {
-    display: none;
-  }
-
-  /* Afficher uniquement sur mobile (écran de moins de 768px) */
-  @media screen and (max-width: 768px) {
-    .mobile-only {
-      display: block;
-    }
-  }
-</style>
+                        /* Par défaut, cacher l'élément */
+                        .mobile-only {
+                          display: none;
+                        }
+                      
+                        /* Afficher uniquement sur mobile (moins de 768px) */
+                        @media screen and (max-width: 768px) {
+                          .mobile-only {
+                            display: block;
+                          }
+                        }
+                      </style>
                     </style>
                     <label for="birthdate" class="mobile-only">Date de naissance</label>
                     <div class="from-control">
