@@ -77,7 +77,7 @@
                         }
                       </style>
                     </style>
-                    <label for="birthdate" class="mobile-only">Date de naissance</label>
+                    <label for="birthdate" class="mobile-only">Date de naissance*</label>
                     <div class="from-control">
                         <input wire:model="birthdate" type="date" placeholder="Date de naissance" id="birthdate" required="required">
                         @error('birthdate')
@@ -86,6 +86,14 @@
                             </span>
                         @enderror
                     </div>
+
+
+<script>
+    // Calculer la date maximale autorisée (18 ans en arrière à partir d'aujourd'hui)
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    document.getElementById('birthdate').setAttribute('max', maxDate.toISOString().split('T')[0]);
+</script>
                 </div>
     
                 <div class="col-lg-6">
@@ -125,7 +133,7 @@
                  <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
-                            <label for="group">Groupe</label>
+                            <label for="group">Groupe*</label>
                             <select  wire:model="group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach($groups as $group)
