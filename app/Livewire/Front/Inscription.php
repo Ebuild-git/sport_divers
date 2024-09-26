@@ -35,10 +35,12 @@ class Inscription extends Component
     {
         $this->validate([
             'email' => 'required|email',
+            'email' => 'required|email|unique:contacts,email',
           //  'nom' => 'required|max:200|string',
           //  'sujet' => 'required|max:200|string',
           //  'message' => 'required|max:5000|string',
-            'telephone' => 'required|numeric',
+            'telephone' => 'required|numeric:unique:contacts',
+            'cin' => 'required|numeric:unique:contacts',
            
             'gender' => 'nullable',
             'gender' => ['required', 'in:MALE,FEMALE'],
@@ -47,6 +49,13 @@ class Inscription extends Component
            
         ], [
             'email.required' => 'Veuillez entrer votre email',
+            'email.unique' => 'Cet mail est déjà utilisé. Veillez entrer votre email',
+            'telephone.numeric' => 'Veuillez entrer un numéro de téléphone valide',
+            'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé. Veuillez entrer un nouveau numéro',
+            'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
+            'cin.unique' => 'Ce numéro de CIN est déjà utilisé. Veuillez entrer un nouveau numéro',
+           
+            
           //  'nom.required' => 'Veuillez entrer votre nom',
             'sujet.required' => 'Veuillez entrer votre sujet',
             'message.required' => 'Veuillez entrer votre message',
