@@ -116,7 +116,7 @@ class Inscription extends Component
                            'cin',
                             'birthdate',
                            // 'group',
-                            'designation',
+                            'group',
                           
 
                         ]);
