@@ -81,7 +81,23 @@
                 </div>
             </div>
             <br><br>
+
             <div class="col-lg-6">
+                <div class="form-control col-lg-12 p-1">
+                    <input wire:model="cin" type="text" placeholder="CIN" id="cin"
+                        class="input-field no-border w-100" required maxlength="8"
+                        pattern="[A-Za-z0-9]{8}"
+                        title="Le CIN doit contenir exactement 8 caractères, avec des lettres ou des chiffres."
+                        oninput="this.value = this.value.slice(0, 8);">
+                    @error('cin')
+                        <span class="small text-danger error-message">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            
+          {{--   <div class="col-lg-6">
                 <div class="form-control col-lg-12 p-1">
                     <input wire:model="cin" type="text" placeholder="CIN" id="cin"
                         class="input-field no-border w-100" required maxlength="8" pattern="[01][0-9]{7}"
@@ -93,7 +109,7 @@
                         </span>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
             <div class="col-lg-12 mt-2">
                 <div class="from-control">
                     <input wire:model="sujet" type="text" placeholder="Sujet" id="subject" required="required">
