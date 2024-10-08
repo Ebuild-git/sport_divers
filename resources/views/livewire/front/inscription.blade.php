@@ -12,6 +12,12 @@
                 {{ session('success') }}
             </div>
         @endif
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Vous avez déjà fait une inscription.</strong>
+        </div>
+    @endif
         <form id="contact-form" class="contact-form" wire:submit="save">
     
             <div class="row">
