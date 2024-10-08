@@ -34,38 +34,19 @@ class Inscription extends Component
     public function save()
     {
         $this->validate([
-            'email' => 'required|email',
             'email' => 'required|email|unique:contacts,email',
-          //  'nom' => 'required|max:200|string',
-          //  'sujet' => 'required|max:200|string',
-          //  'message' => 'required|max:5000|string',
-            'telephone' => 'required|numeric:unique:contacts',
-            'cin' => 'required|numeric:unique:contacts',
-           
-            'gender' => 'nullable',
+            'telephone' => 'required|numeric|unique:contacts,telephone',
+            'cin' => 'required|numeric|unique:contacts,cin',
             'gender' => ['required', 'in:MALE,FEMALE'],
-      
-           'birthdate' => ['required', 'date', 'before:'. date('Y-m-d')],
-           
+            'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
         ], [
             'email.required' => 'Veuillez entrer votre email',
-            'email.unique' => 'Cet mail est déjà utilisé. Veillez entrer votre email',
+            'email.unique' => 'Cet email est déjà utilisé. Veuillez entrer un nouvel email',
             'telephone.numeric' => 'Veuillez entrer un numéro de téléphone valide',
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé. Veuillez entrer un nouveau numéro',
             'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
             'cin.unique' => 'Ce numéro de CIN est déjà utilisé. Veuillez entrer un nouveau numéro',
-           
-            
-          //  'nom.required' => 'Veuillez entrer votre nom',
-            'sujet.required' => 'Veuillez entrer votre sujet',
-            'message.required' => 'Veuillez entrer votre message',
-            'telephone.required' => 'Veuillez entrer votre téléphone',
-        
-            'gender.nullable' => 'Veuillez selectionner votre genre',
-            //'cin.nullable' => 'Veuillez entrer votre CIN',
-          
-         
-          
+            'gender.required' => 'Veuillez sélectionner votre genre',
         ]);
 
         $contact = new Contact();
