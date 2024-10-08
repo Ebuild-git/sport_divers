@@ -41,7 +41,7 @@ class Inscription extends Component
             'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
         ], [
             'email.required' => 'Veuillez entrer votre email',
-            'email.unique' => 'Cet email est déjà utilisé. Veuillez entrer un nouvel email',
+            'email.unique' => 'Cet email est déjà utilisé. Vous avez déjà  fait une inscription',
             'telephone.numeric' => 'Veuillez entrer un numéro de téléphone valide',
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé. Veuillez entrer un nouveau numéro',
             'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
