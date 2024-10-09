@@ -72,23 +72,17 @@
 <style>
     /* Styles pour le modal */
     .modal {
-        display: none;
-        /* Caché par défaut */
-        position: fixed;
-        /* Rester en place */
-        z-index: 1;
-        /* Au-dessus des autres éléments */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Largeur complète */
-        height: 100%;
-        /* Hauteur complète */
-        overflow: auto;
-        /* Permet de faire défiler si nécessaire */
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Fond noir avec transparence */
-    }
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
 
     .modal-content {
         background-color: #fefefe;

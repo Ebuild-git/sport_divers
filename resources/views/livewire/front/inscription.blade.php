@@ -158,6 +158,7 @@
 
             </div>
 @include('livewire.front.condition')
+<br>
 
             <div class="submit-btn">
                 <button class="readon" type="submit">
