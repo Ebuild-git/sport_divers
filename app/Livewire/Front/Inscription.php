@@ -39,6 +39,7 @@ class Inscription extends Component
             'cin' => 'required|numeric|unique:contacts,cin',
             'gender' => ['required', 'in:MALE,FEMALE'],
             'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
+            'terms' => 'accepted',  // Validation pour la case à cocher
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'email.unique' => 'Cet email est déjà utilisé. Vous avez déjà  fait une inscription',
@@ -46,7 +47,8 @@ class Inscription extends Component
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé',
            // 'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
             'cin.unique' => 'Ce numéro de CIN est déjà utilisé.',
-            'gender.required' => 'Veuillez sélectionner votre genre',
+          
+            'terms.accepted' => 'Veuillez accepter les conditions géné'
         ]);
 
         $contact = new Contact();
