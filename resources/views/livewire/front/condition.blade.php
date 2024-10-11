@@ -1,5 +1,5 @@
 
-<div class="col-lg-12 mt-3">
+{{-- <div class="col-lg-12 mt-3">
     <div class="form-check">
         <input wire:model="terms" type="checkbox" id="terms" required aria-required="true">
         <label for="terms" class="form-check-label">
@@ -11,7 +11,7 @@
             </span>
         @enderror
     </div>
-</div>
+</div> --}}
 
 <!-- Modal -->
 <div id="termsModal" class="modal">

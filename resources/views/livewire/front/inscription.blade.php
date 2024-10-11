@@ -154,10 +154,22 @@
                     </div>
                 </div>
 
-
+                <div class="col-lg-12 mt-2">
+                    <div class="form-group">
+                        <input wire:model="terms" type="checkbox" id="terms" required aria-required="true">
+                        <label for="terms" class="form-check-label">
+                            J'accepte les <a href="#" id="openTermsModal">termes et conditions</a>*
+                        </label>
+                        @error('terms')
+                            <span class="small text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
             </div>
-@include('livewire.front.condition')
+ @include('livewire.front.condition') 
 <br>
 
             <div class="submit-btn">
