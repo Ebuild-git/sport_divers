@@ -140,10 +140,24 @@
                         @enderror
                     </div>
                 </div>
+
+               <div class="col-lg-12 mt-2">
+                    <div class="form-check form-switch">
+        
+                        <input name="group"{{--  class="form-check-input" --}}   class="form-check-input switch"   type="checkbox" id="group" wire:model.lazy="group"
+                           wire:click="group">
+                          {{--  <input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Ready" data-offlabel="Not Ready" data-onstyle="success" data-offstyle="danger">
+                  --}}       <label class="form-check-label" for="flexSwitchCheckDefault">Group Externe</label>
+                        @error('group')
+                            <span class="text-danger small"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+                @if(!$group)
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
-                            <label for="group">Groupe*</label>
+                         {{--    <label for="group">Groupe*</label> --}}
                             <select wire:model="group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($groups as $group)
@@ -153,6 +167,23 @@
                         </div>
                     </div>
                 </div>
+                @else
+                <div class="col-lg-12 mt-2">
+                    <div class="from-control">
+                        <div class="form-group">
+                            <label for="group">Groupes Externes*</label>
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($extern_groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                @endif
+                
 
                 <div class="col-lg-12 mt-2">
                     <div class="form-group">

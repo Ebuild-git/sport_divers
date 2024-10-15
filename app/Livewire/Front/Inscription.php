@@ -142,15 +142,23 @@ class Inscription extends Component
     public function render()
     {
          $response = http ::get('https://api.sportdivers.tn/api/groups/public/');
+         $extern_group = http ::get('https://api.sportdivers.tn/api/external-groups/public');
+         if ($extern_group->successful()){
+           $extern_groups =$extern_group->json();
+         }
+         else{
+            $data = ['error' => 'Erreur lors de la récupération des groupes externes'];
+         }
+
          if ($response->successful()) {
-            // Récupérez les données de l'API
+           
             $groups = $response->json();
          } else {
-            // Affichez un message d'erreur si l'API n'est pas accessible
+           
             $data = ['error' => 'Erreur lors de la récupération des groupes'];
          }
         
        //  $groups = $response->json()['data'];
-        return view('livewire.front.inscription', compact('groups')); 
+        return view('livewire.front.inscription', compact('groups', 'extern_groups')); 
     }
 }
