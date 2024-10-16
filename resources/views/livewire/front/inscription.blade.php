@@ -76,12 +76,11 @@
 
                 <div class="col-lg-6">
                     <style>
-                        /* Par défaut, cacher l'élément */
+                      
                         .mobile-only {
                             display: none;
                         }
 
-                        /* Afficher uniquement sur mobile (moins de 768px) */
                         @media screen and (max-width: 768px) {
                             .mobile-only {
                                 display: block;
@@ -133,9 +132,9 @@
                 <div class="col-lg-6">
                     <div class="form-control col-lg-12 p-1">
                         <input wire:model="cin" type="text" placeholder="CIN" id="cin"
-                            class="input-field no-border w-100" required maxlength="8" pattern="[01][0-9]{7}"
+                            class="input-field no-border w-100" required maxlength="16" 
                             title="CIN doit avoir 8 chiffres, et le premier chiffre doit être 0 ou 1"
-                            oninput="this.value = this.value.slice(0, 8);">
+                            >
                         @error('cin')
                             <span class="small text-danger error-message">
                                 {{ $message }}
