@@ -32,6 +32,19 @@ class Inscription extends Component
 
     public $group_interne = false;
 public $group_externe = false;
+public $selected_group;
+
+
+public function toggleGroup($type)
+{
+    if ($type === 'interne') {
+        $this->group_interne = true;
+        $this->group_externe = false;
+    } elseif ($type === 'externe') {
+        $this->group_externe = true;
+        $this->group_interne = false;
+    }
+}
 
 
     
@@ -43,8 +56,11 @@ public $group_externe = false;
             'cin' => 'required|numeric|unique:contacts,cin',
             'gender' => ['required', 'in:MALE,FEMALE'],
             'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
+            'group_interne' => 'required_without:group_externe',
+            'group_externe' => 'required_without:group_interne',
             'terms' => 'accepted',  // Validation pour la case à cocher
-            'group' => ['required', 'in:interne,externe'],
+          //  'group' => ['required', 'in:interne,externe'],
+          'group' => 'required',
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'email.unique' => 'Cet email est déjà utilisé. Vous avez déjà  fait une inscription',
@@ -52,9 +68,14 @@ public $group_externe = false;
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé',
            // 'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
             'cin.unique' => 'Ce numéro de CIN est déjà utilisé.',
-            'group.required' => 'Veuillez choisir le groupe',
+           'group.required' => 'Veuillez choisir le groupe',
+      //      'group.in' => 'Veuillez choisir un groupe interne ou externe.',
+
+     
+         
           
             'terms.accepted' => 'Veuillez accepter les conditions géné'
+
         ]);
 
         $contact = new Contact();

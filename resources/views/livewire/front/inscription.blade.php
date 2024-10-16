@@ -146,11 +146,67 @@
                  <div class="col-lg-6">
                 </div> 
 
-                 
+                <div class="col-lg-6 mt-2">
+                    <div class="form-group">
+                    <input class=" switch" type="radio" name="group" id="group_interne" value="interne" wire:model.lazy="group">
+                    <label class=" form-check-label" for="group_interne">
+                        Group Interne
+                    </label>
+                </div>
+                </div>
+                
+                <div class="col-lg-6 mt-2">
+                    <div class="form-group">
+                    <input class=" switch" type="radio" name="group" id="group_externe" value="externe" wire:model.lazy="group">
+                    <label class=" form-check-label" for="group_externe">
+                        Group Externe
+                    </label>
+                </div>
+                </div>
+                
+                <!-- Afficher un message d'erreur si aucun groupe n'est sélectionné -->
+                @error('group')
+                    <div class="col-lg-12">
+                        <span class="text-danger small">Veuillez sélectionner un groupe (Interne ou Externe).</span>
+                    </div>
+                @enderror
+                
+                @if($group === 'interne')
+                <div class="col-lg-12 mt-2">
+                    <div class="from-control">
+                        <div class="form-group">
+                            <label for="group">Groupes Internes*</label>
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @elseif($group === 'externe')
+                <div class="col-lg-12 mt-2">
+                    <div class="from-control">
+                        <div class="form-group">
+                            <label for="group">Groupes Externes*</label>
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($extern_groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                
+
+                {{--  
                 <div class="col-lg-6 mt-2">
                     <div class="form-group">
                     
-                    <input {{-- class="form-check-input switch" --}} type="checkbox" name="Interne" id="group_interne" wire:model.lazy="group_interne" wire:click="setGroup('interne')">
+                    <input  type="checkbox" name="Interne" id="group_interne" wire:model.lazy="group_interne" wire:click="setGroup('interne')">
                     <label class=" form-check-label" for="group_interne">
                         Group Interne
                     </label>
@@ -162,7 +218,7 @@
                 
                 <div class="col-lg-6 mt-2">
                     <div class="form-group">
-                    <input {{-- class="form-check-input switch" --}} type="checkbox" name="Externe" id="group_externe" wire:model.lazy="group_externe" wire:click="setGroup('externe')">
+                    <input  type="checkbox" name="Externe" id="group_externe" wire:model.lazy="group_externe" wire:click="setGroup('externe')">
                     <label class=" form-check-label" for="group_externe">
                         Group Externe
                     </label>
@@ -173,18 +229,7 @@
                 </div>
                 
                 @if($group_interne)
-               {{--  <div class="col-lg-12 mt-2">
-                    <div class="form-control">
-                        <div class="form-group">
-                            <select wire:model="group_interne" class="form-control" required>
-                                <option value="">Sellectionnez le groupe interne</option>
-                                @foreach ($groups as $group)
-                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div> --}}
+           
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
@@ -200,19 +245,7 @@
                 </div>
                 @endif
                 @if($group_externe)
-                {{-- <div class="col-lg-12 mt-2">
-                    <div class="form-control">
-                        <div class="form-group">
-                            <label for="group_externe">Groupes Externes*</label>
-                            <select wire:model="group_externe" class="form-control" required>
-                                <option value="">Sellectionnez le groupe externe</option>
-                                @foreach ($extern_groups as $group)
-                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div> --}}
+          
 
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">
@@ -228,8 +261,15 @@
                     </div>
                 </div>
                 @endif
+ --}}
 
-                <div class="col-lg-12 mt-2">
+ {{--                 @if(!$group_interne && !$group_externe)
+    <div class="col-lg-12">
+        <span class="text-danger small">Veuillez sélectionner un groupe (Interne ou Externe).</span>
+    </div>
+@endif  --}}
+
+              {{--    <div class="col-lg-12 mt-2">
                     @if($group_interne)
                         <p class="text-info">Vous avez sélectionné le Groupe Interne. Veuillez choisir un groupe interne dans la liste ci-dessous.</p>
                     @elseif($group_externe)
@@ -237,7 +277,7 @@
                     @else
                         <p class="text-info">Veuillez sélectionner un groupe (Interne ou Externe) pour continuer.</p>
                     @endif
-                </div>
+                </div>  --}}
                 
                {{--  <div class="col-lg-6">
                     <input  class="form-check-input switch" type="checkbox" name="Interne" id="group" wire:model.lazy="group" wire:click="group">
