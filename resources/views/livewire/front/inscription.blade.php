@@ -1,5 +1,8 @@
 <div>
     <div>
+
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
         @livewireStyles
 
         @if (session()->has('error'))
@@ -140,19 +143,28 @@
                         @enderror
                     </div>
                 </div>
-
-               <div class="col-lg-12 mt-2">
+                <div class="col-lg-6">
+                    <input  class="form-check-input switch" type="checkbox" id="group" wire:model.lazy="group" wire:click="group">
+                    <label class=" col-lg-12 mt-2 form-check-label" for="group">
+                         Group Externe
+                    </label>
+                    @error('group')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+                
+              {{--  <div class="col-lg-12 mt-2">
                     <div class="form-check form-switch">
         
-                        <input name="group"{{--  class="form-check-input" --}}   class="form-check-input switch"   type="checkbox" id="group" wire:model.lazy="group"
-                           wire:click="group">
-                          {{--  <input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Ready" data-offlabel="Not Ready" data-onstyle="success" data-offstyle="danger">
-                  --}}       <label class="form-check-label" for="flexSwitchCheckDefault">Group Externe</label>
-                        @error('group')
+                         <input name="group"  class="form-check-input switch"   type="checkbox" id="group" wire:model.lazy="group"
+                           wire:click="group"> 
+
+                                  <label class="form-check-label" for="group">Groupes Externes</label>
+                          @error('group')
                             <span class="text-danger small"> {{ $message }} </span>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
                 @if(!$group)
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">

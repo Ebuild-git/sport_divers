@@ -28,6 +28,7 @@ class Inscription extends Component
     public $birthdate = '';
     public $group = '';
     public $designation = '';
+    public $terms = '';
 
 
     
@@ -40,6 +41,7 @@ class Inscription extends Component
             'gender' => ['required', 'in:MALE,FEMALE'],
             'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
             'terms' => 'accepted',  // Validation pour la case à cocher
+          //  'group' => ['required', 'in:interne,externe'],
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'email.unique' => 'Cet email est déjà utilisé. Vous avez déjà  fait une inscription',

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('telephone')->nullable();
             $table->string('sujet')->nullable();
             $table->integer("age")->nullable();
-            $table->text('group')->nullable()->default(null);
+           $table->text('group')->nullable()->default(null);
+          //  $table->enum("group",["externe","interne"])->default("interne");
             $table->text('designation')->nullable()->default(null);
             $table->unsignedBigInteger('group_id')->nullable();
 
