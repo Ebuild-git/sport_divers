@@ -143,8 +143,104 @@
                         @enderror
                     </div>
                 </div>
+                 <div class="col-lg-6">
+                </div> 
+
+                 
+                <div class="col-lg-6 mt-2">
+                    <div class="form-group">
+                    
+                    <input {{-- class="form-check-input switch" --}} type="checkbox" name="Interne" id="group_interne" wire:model.lazy="group_interne" wire:click="setGroup('interne')">
+                    <label class=" form-check-label" for="group_interne">
+                        Group Interne
+                    </label>
+                    @error('group_interne')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+                </div>
+                
+                <div class="col-lg-6 mt-2">
+                    <div class="form-group">
+                    <input {{-- class="form-check-input switch" --}} type="checkbox" name="Externe" id="group_externe" wire:model.lazy="group_externe" wire:click="setGroup('externe')">
+                    <label class=" form-check-label" for="group_externe">
+                        Group Externe
+                    </label>
+                    @error('group_externe')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+                </div>
+                
+                @if($group_interne)
+               {{--  <div class="col-lg-12 mt-2">
+                    <div class="form-control">
+                        <div class="form-group">
+                            <select wire:model="group_interne" class="form-control" required>
+                                <option value="">Sellectionnez le groupe interne</option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="col-lg-12 mt-2">
+                    <div class="from-control">
+                        <div class="form-group">
+                        
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if($group_externe)
+                {{-- <div class="col-lg-12 mt-2">
+                    <div class="form-control">
+                        <div class="form-group">
+                            <label for="group_externe">Groupes Externes*</label>
+                            <select wire:model="group_externe" class="form-control" required>
+                                <option value="">Sellectionnez le groupe externe</option>
+                                @foreach ($extern_groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div> --}}
+
+                <div class="col-lg-12 mt-2">
+                    <div class="from-control">
+                        <div class="form-group">
+                            <label for="group">Groupes Externes*</label>
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($extern_groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                
+               {{--  <div class="col-lg-6">
+                    <input  class="form-check-input switch" type="checkbox" name="Interne" id="group" wire:model.lazy="group" wire:click="group">
+                    <label class=" col-lg-12 mt-2 form-check-label" for="group">
+                         Group Interne
+                    </label>
+                    @error('group')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+
                 <div class="col-lg-6">
-                    <input  class="form-check-input switch" type="checkbox" id="group" wire:model.lazy="group" wire:click="group">
+                    <input  class="form-check-input switch" type="checkbox"name='Externe' id="group" wire:model.lazy="group" wire:click="group">
                     <label class=" col-lg-12 mt-2 form-check-label" for="group">
                          Group Externe
                     </label>
@@ -153,23 +249,12 @@
                     @enderror
                 </div>
                 
-              {{--  <div class="col-lg-12 mt-2">
-                    <div class="form-check form-switch">
-        
-                         <input name="group"  class="form-check-input switch"   type="checkbox" id="group" wire:model.lazy="group"
-                           wire:click="group"> 
-
-                                  <label class="form-check-label" for="group">Groupes Externes</label>
-                          @error('group')
-                            <span class="text-danger small"> {{ $message }} </span>
-                        @enderror
-                    </div>
-                </div> --}}
+            
                 @if(!$group)
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
-                         {{--    <label for="group">Groupe*</label> --}}
+                        
                             <select wire:model="group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($groups as $group)
@@ -194,7 +279,7 @@
                     </div>
                 </div>
 
-                @endif
+                @endif --}}
                 
 
                 <div class="col-lg-12 mt-2">

@@ -30,6 +30,9 @@ class Inscription extends Component
     public $designation = '';
     public $terms = '';
 
+    public $group_interne = false;
+public $group_externe = false;
+
 
     
     public function save()
@@ -140,7 +143,15 @@ class Inscription extends Component
         }
     }
     
-
+    public function setGroup($type)
+    {
+        if ($type === 'interne') {
+            $this->group_externe = false;
+        } elseif ($type === 'externe') {
+            $this->group_interne = false;
+        }
+    }
+    
     public function render()
     {
          $response = http ::get('https://api.sportdivers.tn/api/groups/public/');
