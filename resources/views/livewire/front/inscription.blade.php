@@ -188,7 +188,7 @@
                 <div class="col-lg-12 mt-2">
                     <div class="from-control">
                         <div class="form-group">
-                        
+                            <label for="group">Groupes Internes*</label>
                             <select wire:model="group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($groups as $group)
@@ -228,6 +228,16 @@
                     </div>
                 </div>
                 @endif
+
+                <div class="col-lg-12 mt-2">
+                    @if($group_interne)
+                        <p class="text-info">Vous avez sélectionné le Groupe Interne. Veuillez choisir un groupe interne dans la liste ci-dessous.</p>
+                    @elseif($group_externe)
+                        <p class="text-info">Vous avez sélectionné le Groupe Externe. Veuillez choisir un groupe externe dans la liste ci-dessous.</p>
+                    @else
+                        <p class="text-info">Veuillez sélectionner un groupe (Interne ou Externe) pour continuer.</p>
+                    @endif
+                </div>
                 
                {{--  <div class="col-lg-6">
                     <input  class="form-check-input switch" type="checkbox" name="Interne" id="group" wire:model.lazy="group" wire:click="group">
