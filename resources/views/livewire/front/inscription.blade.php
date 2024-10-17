@@ -131,7 +131,7 @@
                 <br><br>
                 <div class="col-lg-6">
                     <div class="form-control col-lg-12 p-1">
-                        <input wire:model="cin" type="text" placeholder="CIN" id="cin"
+                        <input wire:model="cin" type="text" id="cin" placeholder="CIN / PASSPORT "
                             class="input-field no-border w-100" required maxlength="16" 
                             title="CIN doit avoir 8 chiffres, et le premier chiffre doit être 0 ou 1"
                             >
@@ -147,7 +147,7 @@
 
                 <div class="col-lg-6 mt-2">
                     <div class="form-group">
-                    <input class=" switch" type="radio" name="group" id="group_interne" value="interne" wire:model.lazy="group">
+                    <input class=" switch" type="radio" name="group" id="group_interne" value="interne" wire:model.live="group">
                     <label class=" form-check-label" for="group_interne">
                         Group Interne
                     </label>
@@ -156,7 +156,7 @@
                 
                 <div class="col-lg-6 mt-2">
                     <div class="form-group">
-                    <input class=" switch" type="radio" name="group" id="group_externe" value="externe" wire:model.lazy="group">
+                    <input class=" switch" type="radio" name="group" id="group_externe" value="externe" wire:model.live="group">
                     <label class=" form-check-label" for="group_externe">
                         Group Externe
                     </label>
@@ -175,7 +175,7 @@
                     <div class="from-control">
                         <div class="form-group">
                             <label for="group">Groupes Internes*</label>
-                            <select wire:model="group" class="form-control" required>
+                            <select wire:model="selected_group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($groups as $group)
                                     <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
@@ -189,7 +189,7 @@
                     <div class="from-control">
                         <div class="form-group">
                             <label for="group">Groupes Externes*</label>
-                            <select wire:model="group" class="form-control" required>
+                            <select wire:model="selected_group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($extern_groups as $group)
                                     <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>

@@ -26,7 +26,7 @@ class Inscription extends Component
     public $gender = 'MALE';
     public $cin = '';
     public $birthdate = '';
-    public $group = '';
+    public $group= '';
     public $designation = '';
     public $terms = '';
 
@@ -35,17 +35,11 @@ public $group_externe = false;
 public $selected_group;
 
 
-public function toggleGroup($type)
-{
-    if ($type === 'interne') {
-        $this->group_interne = true;
-        $this->group_externe = false;
-    } elseif ($type === 'externe') {
-        $this->group_externe = true;
-        $this->group_interne = false;
-    }
-}
 
+
+public function UpdatedGroup($value){
+    $this->group = $value;
+}
 
     
     public function save()
@@ -58,18 +52,17 @@ public function toggleGroup($type)
             'birthdate' => ['required', 'date', 'before:' . date('Y-m-d')],
             'group_interne' => 'required_without:group_externe',
             'group_externe' => 'required_without:group_interne',
-            'terms' => 'accepted',  // Validation pour la case à cocher
-          //  'group' => ['required', 'in:interne,externe'],
-          'group' => 'required',
+            'terms' => 'accepted', 
+            'group' => ['required', 'in:interne,externe'],
         ], [
             'email.required' => 'Veuillez entrer votre email',
             'email.unique' => 'Cet email est déjà utilisé. Vous avez déjà  fait une inscription',
-          //  'telephone.numeric' => 'Veuillez entrer un numéro de téléphone valide',
+          
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé',
-           // 'cin.numeric' => 'Veuillez entrer un numéro de CIN valide',
+          
             'cin.unique' => 'Ce numéro de CIN est déjà utilisé.',
            'group.required' => 'Veuillez choisir le groupe',
-      //      'group.in' => 'Veuillez choisir un groupe interne ou externe.',
+    
 
      
          
@@ -80,12 +73,11 @@ public function toggleGroup($type)
 
         $contact = new Contact();
         $contact->email = $this->email;
-       // $contact->nom = $this->nom;
+      
         $contact ->firstName = $this->firstName;
         $contact->lastName = $this->lastName;
 
-      //  $contact->sujet = $this->sujet;
-       // $contact->message = $this->message;
+      
         $contact->telephone = $this->telephone;
        
         $contact->gender = $this->gender;
@@ -93,60 +85,56 @@ public function toggleGroup($type)
         $contact->birthdate = $this->birthdate;
         $contact->group = $this->group;
         $contact->designation = $this->designation;
-   
 
         if ($contact->save()) {
+
+            if($this->group == "interne"){
+                $url = "https://api.sportdivers.tn/api/pre-registrations";
+            }else{
+                $url = "https://api.sportdivers.tn/api/external-pre-registrations";
+            }
           
-           
-          
-            if ($contact->save()) {
-                // Préparation des données pour l'API externe
+                
                 $data = [
                     'email' => $this->email,
-                   /// 'firstName' => $this->nom, 
-                   // 'lastName' => $this->sujet, 
+                
                     'phone' => $this->telephone, 
                     'observation' => $this->message, 
                     'gender' =>  $this->gender,
                     'cin' => $this->cin,
                     'birthdate' => $this->birthdate,
-                    'group' => $this->group,
+                    'group' => $this->selected_group,
                     'lastName'=>$this->lastName,
                     'firstName'=>$this->firstName,
-                   // 'birthdate'=>$this->birthdate,
-                  //  'designation' => $this->designation
-                    
                 ];
         
+                
+ 
+
                 try {
                     
                     $client = new Client();
-                    $response = $client->post('https://api.sportdivers.tn/api/pre-registrations', [ 
+                    $response = $client->post($url, [ 
                         'json' => $data,
                         'headers' => [
                             'Accept' => 'application/json',
                             'Authorization' => 'Bearer VOTRE_JETON_API', 
                         ],
                     ]);
-        
                    
                     if ($response->getStatusCode() == 201) {
                         $this->reset([
-                            'email',
-                     //       'nom',
+                            'email',                 
                             'sujet',
                            'message',
                             'telephone',
                             'lastName',
-                            'firstName',
-                          
-                            
+                            'firstName',                           
                            'gender',
                            'cin',
-                            'birthdate',
-                           // 'group',
+                            'birthdate',                          
                             'group',
-                          
+                   
 
                         ]);
                         session()->flash('success', 'Votre inscription a été envoyée avec succès ');
@@ -162,17 +150,9 @@ public function toggleGroup($type)
                 session()->flash('error', 'Une erreur est survenue lors de l\'envoi de votre inscription');
                 return;
             }
-        }
     }
     
-    public function setGroup($type)
-    {
-        if ($type === 'interne') {
-            $this->group_externe = false;
-        } elseif ($type === 'externe') {
-            $this->group_interne = false;
-        }
-    }
+
     
     public function render()
     {
@@ -192,8 +172,10 @@ public function toggleGroup($type)
            
             $data = ['error' => 'Erreur lors de la récupération des groupes'];
          }
-        
-       //  $groups = $response->json()['data'];
+
+
+
+    
         return view('livewire.front.inscription', compact('groups', 'extern_groups')); 
     }
 }
