@@ -8,9 +8,10 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
- 
+
+
 
         @php
             $config = DB::table('configs')->first();
@@ -39,9 +40,42 @@
 
         </style>
 
+{{-- 
+<div id="rs-slider" class="rs-slider home-slider slider-navigation">
+    <div class="slider">
+       
+        <div class="single-slider">
+            <div class="container">
+                <div class="text-part">
+                    <h2 class="sub-title wow fadeInLeft" data-wow-delay="1s">Welcome to Khelo</h2>
+                    <h1 class="title wow fadeInRight" data-wow-delay="1s"><span class="primary-color">Sporting</span> Club</h1>
+                    <div class="desc wow fadeInLeft" data-wow-delay="1s">We denounce with righteous indignation and dislike men who are so beguiled <br> and demoralized by the charms of pleasure of the moment.</div>
+                    <div class="slider-btn wow fadeInRight" data-wow-delay="1s">
+                        <a class="readon" href="#">Book a ticket</a>
+                    </div>
+                </div>
+                <div class="fly-layer">
+                    <div class="layer-image">
+                        <div class="parallax-ball">
+                            <img class="animate3" src="images/slider/ball1.png" alt="img">
+                        </div>
+                        <div class="animate4">
+                            <img src="images/slider/h1-layer1.png" alt="Slider Layer Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      
+    </div>
+</div> --}}
+<!-- Slider Section End -->
+
+
 <div id="rs-slider" class="rs-slider home-slider slider-navigation">
 
-   {{--  <div class="slider-carousel owl-carousel">
+     <div class="slider ">
         @foreach ($banners as $banner)
         <div class="single-slider slide2"
             style="background-image: url('{{ Storage::url($banner->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -66,8 +100,8 @@
         @endforeach
 
     </div>
-</div> --}}
-     
+</div> 
+    
 
 
         <!-- About Us Section Start -->
@@ -507,8 +541,6 @@
                 </div>
             </div>
             <!-- Sponsor Logo Section End -->
-
-            <script src="/js/jquery.nice-select.min.js"></script>
 
 
     </main>
