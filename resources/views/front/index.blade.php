@@ -40,26 +40,8 @@
         </style>
 
 <div id="rs-slider" class="rs-slider home-slider slider-navigation">
-<script>
-    $(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    items: 1
-  });
-});
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    items: 1
-  });
-});
 
-</script>
-    <div class="slider-carousel owl-carousel">
+   {{--  <div class="slider-carousel owl-carousel">
         @foreach ($banners as $banner)
         <div class="single-slider slide2"
             style="background-image: url('{{ Storage::url($banner->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -84,7 +66,7 @@ $(document).ready(function(){
         @endforeach
 
     </div>
-</div>
+</div> --}}
      
 
 
