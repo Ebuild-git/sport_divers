@@ -9,6 +9,8 @@
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+
 
         @php
             $config = DB::table('configs')->first();
@@ -38,30 +40,40 @@
         </style>
 
 <div id="rs-slider" class="rs-slider home-slider slider-navigation">
+<script>
+    $(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    items: 1
+  });
+});
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    items: 1
+  });
+});
 
+</script>
     <div class="slider-carousel owl-carousel">
         @foreach ($banners as $banner)
         <div class="single-slider slide2"
             style="background-image: url('{{ Storage::url($banner->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
             <div class="container">
                 <div class="image-part common">
-                    {{-- <div class="image-wrap">
-                        <img class="player animate5" src="{{ Storage::url($banner->image) }}" alt="">
-                        <img class="ball animate6" src="{{ Storage::url($banner->image) }}" alt="">
-                    </div> --}}
+                  
                 </div>
-              {{--   <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
+              
                 <h2 class="title"><span class="primary-color"></span> {{ $banner->titre ?? '' }}</h>
                 <br>
                 <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div>
                 <br><br>
                 <div class="text-part common">
-                    {{-- <h2 class="sub-title"> {{ $banner->titre ?? '' }}</h2> --}}
-                    {{--  <h1 class="title"><span class="primary-color">Sport</span> Divers</h1>  --}}
-                   {{--  <div class="desc"> <br> {{ $banner->sous_titre ?? '' }}</div> --}}
-                   {{--  <div class="slider-btn contact title">
-                        <a class="readon" href="{{ route('contact') }}">Contactez nous</a>
-                    </div> --}}
+               
                 </div>
 
                 <div class="slider-btn contact text-center">
@@ -513,6 +525,9 @@
                 </div>
             </div>
             <!-- Sponsor Logo Section End -->
+
+            <script src="/js/jquery.nice-select.min.js"></script>
+
 
     </main>
 
