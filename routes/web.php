@@ -39,6 +39,7 @@ Route::post('/video/view/{id}', [VideoController::class, 'incrementViewCount'])-
 
 
 Route::get('contact', [ContactController::class, 'contact'])->name("contact");
+Route::get('about', [ContactController::class, 'about'])->name("about");
 
 Route::get('inscription', [ContactController::class, 'inscription'])->name("inscription");
 Route::get('/fetch-group', [ContactController::class, 'fetchGroup'])->name('fetch.group');
