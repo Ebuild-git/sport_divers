@@ -402,12 +402,14 @@
         <script src="js/jquery.counterup.min.js"></script>
         <script src="js/waypoints.min.js"></script>
         
-        <script src="js/jquery.nice-select.min.js"></script>
+       
         <script src="js/swiper.min.js"></script>
        
         <script src="js/main.js"></script>
 
-        <script src="/assets/js/jquery.nice-select.min.js"></script>
+        {{-- <script src="/assets/js/jquery.nice-select.min.js"></script> --}}
+        <script src="/js/jquery.nice-select.min.js"></script>
+
 
 </body>
 
