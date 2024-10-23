@@ -17,6 +17,7 @@ class Coach extends Model
            'phone',
             'email',
             'photo',
+            'group',
 
     ];
    

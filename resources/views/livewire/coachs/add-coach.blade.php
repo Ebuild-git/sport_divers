@@ -89,6 +89,20 @@
                         </div>
                     </div>
                 </div> --}}
+
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <div class="form-group">
+                        
+                            <select wire:model="group" class="form-control" required>
+                                <option value="">Sellectionnez le groupe</option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">

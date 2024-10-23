@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('contacts', function (Blueprint $table) {
+        Schema::table('coaches', function (Blueprint $table) {
             //
+           // $table->enum("group",["externe","interne"])->default("interne");
+            $table->string('group')->nullable();
         });
     }
 
@@ -21,8 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            //
+        Schema::table('coachess', function (Blueprint $table) {
+            
+            $table->dropColumn("group");
         });
     }
 };

@@ -83,7 +83,7 @@
                                             <tr>
                                                 <th>Photo</th>
                                                 <th>Nom</th>
-                                                 <th>Prénom</th>
+                                                 <th>prenom</th>
 
 
                                                 <th>Email</th>
@@ -103,9 +103,10 @@
 
 
                                         <tbody>
-                                           
-                                            @foreach  ($coachs as $coach)
                                             @if($coachs)
+                                         
+                                            @foreach  ($coachs as $coach)
+                                          
                                                 
                                          
                                                 <tr>
@@ -114,9 +115,14 @@
                                                             height="40 " class="rounded shadow" alt="">
                                                     </td>
                                                     <td>
-                                                        {{ $coach->nom }}
+                                                        {{ $coach->nom }}  {{ $coach->prenom }}
                                                     </td>
-                                                     <td>{{ $coach->prenom }}</td>
+                                                    <td>
+                                                     
+                                                        {{ $coach->group }}
+                                                  
+                                                      
+                                                    </td>
                                                      
 
 
@@ -164,11 +170,18 @@
 
 
                                                 </tr>
-                                                @endif
-                                                <tr>
-                                                    <td colspan="9" class="text-center">Aucun coach trouvé</td>
-                                                </tr>
+                                              
+                                                
                                             @endforeach
+
+                                            @else
+                                            <tr>
+                                                <td colspan="9" class="text-center">Aucun coach trouvé</td>
+                                            </tr>
+                                            @endif
+                                           
+
+                                          
 
                                         </tbody>
 

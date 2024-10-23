@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use GuzzleHttp\Client;
+
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Cookie\CookieJar;
+
 class AddCoach extends Component
 {
 
@@ -17,6 +22,13 @@ class AddCoach extends Component
 
     public $nom, $prenom, $email, $phone, $photo , $photo2,$adresse, $coach;
     public $updateMode = false;
+    public $group; // To bind the selected group value
+  //  public $groups = []; 
+
+    public $group_interne = false;
+    public $group_externe = false;
+    public $selected_group;
+    
     protected $listeners = ['coachAdded' => 'render'];
 
     public function mount($coach){
@@ -25,6 +37,7 @@ class AddCoach extends Component
           
             $this->nom = $coach->nom;
             $this->prenom = $coach->prenom;
+            $this ->group = $coach->group;
             
             $this->email = $coach->email;
             $this->phone = $coach->phone;
@@ -45,6 +58,7 @@ private function resetInputFields(){
     $this->photo = '';
     $this->photo2 = '';
     $this->adresse = '';
+    $this->group = '';
 
 
 }
@@ -55,14 +69,15 @@ private function resetInputFields(){
 public function create()
 {
     $this->validate([
-        'nom' =>'required|string',
-        'prenom' =>'required|string',
-        'email' =>'required|email|unique:coaches,email',
-        'phone' =>'required|numeric',
-        'adresse' =>'required',
+        'nom' =>'nullable|string',
+        'prenom' =>'nullable|string',
+        'email' =>'nullable|email|unique:coaches,email',
+        'phone' =>'nullable|numeric',
+        'adresse' =>'nullable|string',
         'photo' =>'nullable|image|max:4048',
        // 'image' => 'required|image|max:4048',
         //'photo2' =>'required|image|mimes:jpeg,png,jpg|max:2048',
+     //   'group' => 'required|exists:groups,id',
        
      
     ]);
@@ -72,6 +87,7 @@ public function create()
       $coach = new coach();
       $coach->nom = $this->nom;
       $coach->prenom = $this->prenom;
+      $coach->group = $this->group;
       $coach->email = $this->email;
       $coach->phone = $this->phone;
       $coach->adresse = $this->adresse;
@@ -111,15 +127,16 @@ public function edit($id)
         $this->telephone = $coach->telephone;
         $this->adresse = $coach->adresse;
         $this->image = $coach->image;
+        $this->group = $coach->group;
     }
 
     public function update()
     {
         $data = $this->validate([
-            'titre' => 'required|string',
-            'description' => 'required|string|max:260',
-            'email' => 'required|email|unique:coachs,email,' . $this->coachId,
-            'telephone' => 'required|numeric',
+            'titre' => 'nullable|string',
+            'description' => 'nullable|string|max:260',
+            'email' => 'nullable|email|unique:coachs,email,' . $this->coachId,
+            'telephone' => 'nullable|numeric',
             'adresse' => 'nullable|string|max:260',
             'newImage' => 'nullable|image|mimes:jpg,jpeg,png,webp',
         ]);
@@ -130,6 +147,7 @@ public function edit($id)
         $coach->email = $data['email'];
         $coach->phone = $data['phone'];
         $coach->adresse = $data['adresse'];
+        $coach->group = $data['group'];
         $coach->image = $this->image->store('coachs', 'public');
 
         if (isset($data['newImage'])) {
@@ -163,6 +181,18 @@ public function delete($id)
 
     public function render()
     {
-        return view('livewire.coachs.add-coach');
+       
+
+        $response = http ::get('https://api.sportdivers.tn/api/groups/public/');
+
+        if ($response->successful()) {
+           
+            $groups = $response->json();
+         } else {
+           
+            $data = ['error' => 'Erreur lors de la récupération des groupes'];
+         }
+
+        return view('livewire.coachs.add-coach', compact('groups'));
     }
 }
