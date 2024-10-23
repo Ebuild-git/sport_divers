@@ -84,6 +84,7 @@
                                                 <th>Photo</th>
                                                 <th>Nom</th>
                                                  <th>prenom</th>
+                                                 <th>Group(Equipe)</th>
 
 
                                                 <th>Email</th>
@@ -115,8 +116,12 @@
                                                             height="40 " class="rounded shadow" alt="">
                                                     </td>
                                                     <td>
-                                                        {{ $coach->nom }}  {{ $coach->prenom }}
+                                                        {{ $coach->nom }} 
                                                     </td>
+                                                    <td>
+                                                         {{ $coach->prenom }} 
+                                                    </td>
+
                                                     <td>
                                                      
                                                         {{ $coach->group }}

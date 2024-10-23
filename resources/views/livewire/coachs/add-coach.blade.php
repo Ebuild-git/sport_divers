@@ -97,7 +97,7 @@
                             <select wire:model="group" class="form-control" required>
                                 <option value="">Sellectionnez le groupe</option>
                                 @foreach ($groups as $group)
-                                    <option value="{{ $group['id'] }}">{{ $group['designation'] }}</option>
+                                    <option value="{{ $group['designation'] }}">{{ $group['designation'] }}</option>
                                 @endforeach
                             </select>
                         </div>

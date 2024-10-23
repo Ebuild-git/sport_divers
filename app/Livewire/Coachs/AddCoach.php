@@ -23,7 +23,10 @@ class AddCoach extends Component
     public $nom, $prenom, $email, $phone, $photo , $photo2,$adresse, $coach;
     public $updateMode = false;
     public $group; // To bind the selected group value
-  //  public $groups = []; 
+  // public $groups = []; 
+
+  public $groupId;  // This will store the group's ID
+    public $groupDesignation; // This will store the group's designation
 
     public $group_interne = false;
     public $group_externe = false;
@@ -63,7 +66,12 @@ private function resetInputFields(){
 
 }
 
-   
+public function updatedGroupId($value)
+{
+    // Find the selected group's designation based on the ID
+    $selectedGroup = collect($this->group)->firstWhere('id', $value);
+    $this->groupDesignation = $selectedGroup['designation'] ?? '';
+}
 
     
 public function create()
@@ -88,6 +96,7 @@ public function create()
       $coach->nom = $this->nom;
       $coach->prenom = $this->prenom;
       $coach->group = $this->group;
+    //  $coach ->groupId = $this->groupId;
       $coach->email = $this->email;
       $coach->phone = $this->phone;
       $coach->adresse = $this->adresse;
